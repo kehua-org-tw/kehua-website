@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>藝術節驗證</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#f5f5f2;--surface:#fff;--border:rgba(0,0,0,0.09);--border-strong:rgba(0,0,0,0.2);
+  --text:#1a1a1a;--muted:#777;
+  --green:#1a7a40;--green-bg:#e8f5ee;--green-border:#a8d8b8;
+  --red:#b91c1c;--red-bg:#fdecea;--red-border:#f5b8b8;
+  --yellow:#854d0e;--yellow-bg:#fefce8;
+  --blue:#1a56b0;--blue-bg:#e8f0fe;
+  --r:14px;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+
+/* ── SETUP ── */
+#setupScreen{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.setup-header{background:#1a1a1a;color:#fff;padding:calc(env(safe-area-inset-top,0px)+16px) 20px 16px}
+.setup-header h1{font-size:18px;font-weight:700}
+.setup-header p{font-size:13px;opacity:.6;margin-top:4px}
+.setup-body{padding:16px;max-width:520px;margin:0 auto}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:14px}
+.card-title{font-size:15px;font-weight:700;margin-bottom:16px}
+.field{margin-bottom:14px}.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.field select,.field input{width:100%;padding:14px;border:1.5px solid var(--border-strong);border-radius:10px;font-size:16px;background:#fff;color:var(--text);appearance:none;-webkit-appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.field input:focus,.field select:focus{outline:none;border-color:#1a1a1a}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;border:none;-webkit-appearance:none;transition:opacity .15s,transform .1s}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:#1a1a1a;color:#fff}
+.btn-outline{background:#fff;color:var(--text);border:1.5px solid var(--border-strong);font-size:14px;padding:12px}
+.btn-sm{font-size:13px;padding:10px 14px;width:auto}
+.gs-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.6}
+.status-pill{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:30px;font-size:13px;margin-top:10px}
+.status-pill.ok{background:var(--green-bg);color:var(--green)}
+.status-pill.err{background:var(--red-bg);color:var(--red)}
+.status-pill.pending{background:var(--yellow-bg);color:var(--yellow)}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-g{background:var(--green)}.dot-r{background:var(--red)}.dot-y{background:#d97706}
+
+/* ── SCANNER ── */
+#scannerScreen{flex:1;display:none;flex-direction:column;overflow:hidden}
+.scan-header{background:#1a1a1a;color:#fff;padding:calc(env(safe-area-inset-top,0px)+10px) 16px 10px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.scan-header-info strong{font-size:14px;display:block}
+.scan-header-info span{font-size:11px;opacity:.65}
+.switch-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer}
+
+/* ── LIVE CAMERA mode ── */
+#liveModeArea{flex-shrink:0}
+.video-wrap{position:relative;background:#000;width:100%;aspect-ratio:1/1;max-height:55vw;overflow:hidden}
+@media(min-width:500px){.video-wrap{max-height:300px}}
+#video{width:100%;height:100%;object-fit:cover;display:block}
+.scan-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.scan-frame{width:56vw;height:56vw;max-width:220px;max-height:220px;position:relative}
+.corner{position:absolute;width:22px;height:22px;border-color:#fff;border-style:solid}
+.corner.tl{top:0;left:0;border-width:3px 0 0 3px;border-radius:8px 0 0 0}
+.corner.tr{top:0;right:0;border-width:3px 3px 0 0;border-radius:0 8px 0 0}
+.corner.bl{bottom:0;left:0;border-width:0 0 3px 3px;border-radius:0 0 0 8px}
+.corner.br{bottom:0;right:0;border-width:0 3px 3px 0;border-radius:0 0 8px 0}
+.scan-line{position:absolute;left:6px;right:6px;height:2px;background:rgba(255,255,255,.75);top:6px;animation:scanline 2s ease-in-out infinite}
+@keyframes scanline{0%,100%{top:6px}50%{top:calc(100% - 8px)}}
+.scan-hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:rgba(255,255,255,.7);font-size:12px}
+
+/* ── PHOTO mode (fallback) ── */
+#photoModeArea{flex-shrink:0;display:none}
+.photo-mode-inner{padding:14px}
+#photoBtn{
+  width:100%;padding:20px;border-radius:16px;font-size:17px;font-weight:700;
+  background:#1a1a1a;color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  -webkit-appearance:none;transition:opacity .15s,transform .1s
+}
+#photoBtn:active{transform:scale(0.97);opacity:.88}
+#photoInput{display:none}
+.mode-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--yellow-bg);color:var(--yellow);border-radius:20px;font-size:12px;font-weight:600;margin-bottom:10px}
+
+/* ── Result ── */
+.result-area{flex-shrink:0;padding:10px 14px}
+.result-card{border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:background .2s,border .2s}
+.result-card.idle{background:#fff;border:1.5px solid var(--border)}
+.result-card.pass{background:var(--green-bg);border:2.5px solid var(--green-border)}
+.result-card.fail{background:var(--red-bg);border:2.5px solid var(--red-border)}
+.result-card.warn{background:var(--yellow-bg);border:2.5px solid #fde68a}
+.result-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;font-weight:700;color:#fff}
+.result-icon.idle{background:#e0e0e0;font-size:20px}
+.result-icon.pass{background:var(--green)}
+.result-icon.fail{background:var(--red)}
+.result-icon.warn{background:#d97706}
+.result-body{flex:1;min-width:0}
+.r-name{font-size:20px;font-weight:700;line-height:1.2}
+.r-id{font-size:12px;color:var(--muted);margin-top:2px}
+.r-ws{font-size:14px;font-weight:600;margin-top:6px}
+.r-ws.pass{color:var(--green)}.r-ws.fail{color:var(--red)}.r-ws.warn{color:#92400e}
+.r-sub{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.4}
+.r-time{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ── Stats ── */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px 10px;flex-shrink:0}
+.stat-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center}
+.stat-val{font-size:22px;font-weight:700}
+.stat-lbl{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── Bottom scroll ── */
+.bottom-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 14px 14px}
+.bottom-area::-webkit-scrollbar{display:none}
+.manual-box{margin-bottom:10px}
+.manual-box input{width:100%;padding:13px 14px;border:1.5px solid var(--border-strong);border-radius:12px;font-size:16px;background:#fff}
+.manual-box input:focus{outline:none;border-color:#1a1a1a}
+.manual-results{margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.manual-item{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.manual-item:last-child{border-bottom:none}
+.manual-item:active{background:var(--bg)}
+.log-box{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.log-head{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.log-head span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.log-item{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.log-item:last-child{border-bottom:none}
+.log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.log-name{font-size:14px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.log-meta{font-size:11px;color:var(--muted);flex-shrink:0;text-align:right}
+.log-badge{font-size:11px;padding:2px 8px;border-radius:20px;flex-shrink:0}
+.log-empty{padding:20px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* ── Modal ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center}
+.modal-sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:540px;padding:20px 20px calc(env(safe-area-inset-bottom,16px)+16px);max-height:90vh;overflow-y:auto}
+.modal-handle{width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 16px}
+.modal-sheet h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.modal-sheet p{font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.65}
+.code-block{background:#f5f5f2;border-radius:10px;padding:12px;font-size:11px;font-family:monospace;line-height:1.75;margin-bottom:12px;overflow-x:auto;white-space:pre}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- ══ SETUP ══ -->
+<div id="setupScreen">
+  <div class="setup-header">
+    <h1>藝術節工作坊驗證</h1>
+    <p>設定時段後開始掃碼</p>
+  </div>
+  <div class="setup-body">
+    <div class="card">
+      <div class="card-title">目前時段</div>
+      <div class="field">
+        <label>第幾天</label>
+        <select id="selDay">
+          <option value="1">第 1 天</option><option value="2">第 2 天</option>
+          <option value="3">第 3 天</option><option value="4">第 4 天</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>時段</label>
+        <select id="selSession">
+          <option value="1">時段 1</option><option value="2">時段 2</option>
+          <option value="3">時段 3</option><option value="4">時段 4</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>本教室的工作坊名稱</label>
+        <input type="text" id="wsName" placeholder="例：水彩基礎" autocomplete="off">
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Google Sheets 記錄 <span style="font-size:12px;font-weight:400;color:var(--muted)">（選填）</span></div>
+      <div class="field">
+        <label>Apps Script 網址</label>
+        <input type="url" id="gsUrl" placeholder="https://script.google.com/…" autocomplete="off">
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-outline btn-sm" onclick="testGS()">測試連線</button>
+        <button class="btn btn-outline btn-sm" onclick="showGsHelp()">如何設定？</button>
+      </div>
+      <div id="gsStatus" class="hidden"></div>
+    </div>
+    <button class="btn btn-primary" onclick="startScanner()" style="margin-bottom:8px">開始掃碼驗證 →</button>
+    <p class="gs-hint">未填 Google Sheets 仍可正常驗證</p>
+    <div style="height:env(safe-area-inset-bottom,16px)"></div>
+  </div>
+</div>
+
+<!-- ══ SCANNER ══ -->
+<div id="scannerScreen">
+  <div class="scan-header">
+    <div class="scan-header-info">
+      <strong id="hdrSession">第 1 天 · 時段 1</strong>
+      <span id="hdrWs"></span>
+    </div>
+    <button class="switch-btn" onclick="goSetup()">切換時段</button>
+  </div>
+
+  <!-- Live camera -->
+  <div id="liveModeArea">
+    <div class="video-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="scan-overlay">
+        <div class="scan-frame">
+          <div class="corner tl"></div><div class="corner tr"></div>
+          <div class="corner bl"></div><div class="corner br"></div>
+          <div class="scan-line"></div>
+        </div>
+      </div>
+      <div class="scan-hint">將 QR Code 對準框內</div>
+    </div>
+  </div>
+
+  <!-- Photo capture fallback -->
+  <div id="photoModeArea">
+    <div class="photo-mode-inner">
+      <div class="mode-badge">📸 拍照掃碼模式</div>
+      <button id="photoBtn" onclick="document.getElementById('photoInput').click()">
+        <span style="font-size:26px">📷</span> 點擊拍攝 QR Code
+      </button>
+      <input type="file" id="photoInput" accept="image/*" capture="environment" onchange="handlePhoto(this)">
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;line-height:1.6">
+        每次點擊後手機相機會自動開啟，拍完即自動辨識
+      </p>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result-area">
+    <div class="result-card idle" id="resultCard">
+      <div class="result-icon idle" id="rIcon">📷</div>
+      <div class="result-body">
+        <div class="r-name" id="rName" style="color:var(--muted);font-size:15px">等待掃描</div>
+        <div class="r-id" id="rId"></div>
+        <div class="r-ws" id="rWs"></div>
+        <div class="r-sub" id="rSub">請掃描學員的 QR Code</div>
+        <div class="r-time" id="rTime"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-box"><div class="stat-val" id="sPass" style="color:var(--green)">0</div><div class="stat-lbl">通過</div></div>
+    <div class="stat-box"><div class="stat-val" id="sFail" style="color:var(--red)">0</div><div class="stat-lbl">拒絕</div></div>
+    <div class="stat-box"><div class="stat-val" id="sDup" style="color:var(--muted)">0</div><div class="stat-lbl">重複</div></div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="bottom-area">
+    <div class="manual-box">
+      <input id="manualInput" placeholder="搜尋學員姓名或編號" oninput="manualSearch(this.value)" autocomplete="off">
+      <div id="manualResults" class="manual-results hidden"></div>
+    </div>
+    <div class="log-box">
+      <div class="log-head">
+        <span>掃描紀錄</span>
+        <span id="logCount" style="font-weight:400;letter-spacing:0">0 筆</span>
+      </div>
+      <div id="logList"><div class="log-empty">尚無紀錄</div></div>
+    </div>
+    <div style="height:env(safe-area-inset-bottom,16px)"></div>
+  </div>
+</div>
+
+<!-- ══ GS MODAL ══ -->
+<div id="gsModal" class="modal-bg hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <h3>設定 Google Sheets 自動記錄</h3>
+    <p>1. 開啟 Google Sheets 建立一份新試算表</p>
+    <p>2. 點「擴充功能」→「Apps Script」，貼上程式碼後儲存：</p>
+    <div class="code-block">function doPost(e) {
+  var d = JSON.parse(e.postData.contents);
+  var s = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getActiveSheet();
+  s.appendRow([
+    d.time, d.day, d.session,
+    d.workshop, d.id, d.name, d.result
+  ]);
+  return ContentService
+    .createTextOutput('ok');
+}</div>
+    <p>3. 點「部署」→「新增部署」→ 類型：網頁應用程式 → 存取：所有人</p>
+    <p>4. 複製網址貼入上方欄位</p>
+    <button class="btn btn-primary" style="margin-top:8px" onclick="document.getElementById('gsModal').classList.add('hidden')">關閉</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script>
+let curDay=1,curSession=1,curWs='',gsUrl='';
+let scanLog=[],nPass=0,nFail=0,nDup=0;
+let stream=null,cooldown=false;
+let liveMode=false;
+
+// ── Setup ──
+function startScanner(){
+  curDay=+document.getElementById('selDay').value;
+  curSession=+document.getElementById('selSession').value;
+  curWs=document.getElementById('wsName').value.trim();
+  gsUrl=document.getElementById('gsUrl').value.trim();
+  document.getElementById('hdrSession').textContent='第 '+curDay+' 天 · 時段 '+curSession;
+  document.getElementById('hdrWs').textContent=curWs||'工作坊驗證';
+  document.getElementById('setupScreen').style.display='none';
+  const ss=document.getElementById('scannerScreen');
+  ss.style.display='flex';ss.style.flexDirection='column';
+  initCamera();
+}
+
+function goSetup(){
+  stopCamera();
+  document.getElementById('scannerScreen').style.display='none';
+  document.getElementById('setupScreen').style.display='block';
+}
+
+// ── Camera: try live stream, fall back to photo capture ──
+async function initCamera(){
+  // First check if getUserMedia is even available
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    switchToPhotoMode('此環境不支援即時掃碼，已切換為拍照模式');
+    return;
+  }
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}
+    });
+    const v=document.getElementById('video');
+    v.srcObject=stream;
+    await v.play();
+    liveMode=true;
+    startQRLoop(v);
+  }catch(e){
+    // Any error (NotAllowedError, NotFoundError, SecurityError from file://) → photo mode
+    switchToPhotoMode(null);
+  }
+}
+
+function switchToPhotoMode(reason){
+  liveMode=false;
+  document.getElementById('liveModeArea').style.display='none';
+  document.getElementById('photoModeArea').style.display='block';
+  if(reason){
+    setResult('idle','拍照掃碼模式已啟用','','','點擊下方按鈕拍攝學員 QR Code');
+  }
+}
+
+function stopCamera(){
+  if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
+  liveMode=false;
+}
+
+// ── Live QR loop ──
+function startQRLoop(v){
+  const c=document.createElement('canvas');
+  const ctx=c.getContext('2d',{willReadFrequently:true});
+  function tick(){
+    if(!stream||!liveMode)return;
+    if(v.readyState>=2&&!cooldown){
+      c.width=v.videoWidth;c.height=v.videoHeight;
+      ctx.drawImage(v,0,0);
+      try{
+        const img=ctx.getImageData(0,0,c.width,c.height);
+        const qr=jsQR(img.data,img.width,img.height,{inversionAttempts:'dontInvert'});
+        if(qr&&qr.data)processQR(qr.data);
+      }catch(_){}
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// ── Photo capture QR decode ──
+function handlePhoto(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const c=document.createElement('canvas');
+      // Scale down large photos for speed
+      const MAX=1200;
+      const scale=Math.min(1,MAX/Math.max(img.width,img.height));
+      c.width=img.width*scale;c.height=img.height*scale;
+      const ctx=c.getContext('2d');
+      ctx.drawImage(img,0,0,c.width,c.height);
+      const imageData=ctx.getImageData(0,0,c.width,c.height);
+      const qr=jsQR(imageData.data,imageData.width,imageData.height,{inversionAttempts:'attemptBoth'});
+      if(qr&&qr.data){
+        processQR(qr.data);
+      }else{
+        setResult('fail','無法識別 QR Code','','','請確認 QR Code 清晰可見，再重新拍攝');
+      }
+      // Reset so same file can be picked again
+      input.value='';
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── QR Processing ──
+function processQR(raw){
+  if(cooldown)return;
+  cooldown=true;
+  setTimeout(()=>cooldown=false,2000);
+
+  let d;
+  try{d=JSON.parse(raw);}catch(e){
+    setResult('fail','QR Code 無法識別','','','格式錯誤，請確認是否為本活動的 QR Code');
+    return;
+  }
+
+  const id=String(d.i||d.id||'');
+  const name=String(d.n||d.name||'');
+  const sched=d.s||d.schedule;
+  if(!id||!name||!sched){setResult('fail','資料不完整','','','QR Code 缺少必要資訊');return;}
+
+  const dayData=sched[curDay]||sched[String(curDay)]||{};
+  const wsInQR=String(dayData[curSession]||dayData[String(curSession)]||'').trim();
+
+  const key=id+'-'+curDay+'-'+curSession;
+  const dup=scanLog.find(l=>l.key===key&&l.result==='pass');
+  if(dup){
+    nDup++;updateStats();
+    setResult('warn',name,id,wsInQR,'已於 '+dup.time+' 掃描過');
+    addLog('warn',name,id,wsInQR,'重複');
+    return;
+  }
+
+  if(!curWs){
+    nPass++;updateStats();
+    setResult('pass',name,id,wsInQR,wsInQR?'本時段：'+wsInQR:'本時段無課程');
+    addLog('pass',name,id,wsInQR,'通過');
+    writeSheets(id,name,wsInQR,'pass');
+    return;
+  }
+
+  if(wsInQR===curWs){
+    nPass++;updateStats();
+    setResult('pass',name,id,wsInQR,'可以進入');
+    addLog('pass',name,id,wsInQR,'通過');
+    writeSheets(id,name,wsInQR,'pass');
+  }else{
+    nFail++;updateStats();
+    const msg=wsInQR?'本時段應去：'+wsInQR:'本時段無此工作坊';
+    setResult('fail',name,id,wsInQR,msg);
+    addLog('fail',name,id,wsInQR,'拒絕');
+    writeSheets(id,name,wsInQR,'fail');
+  }
+}
+
+// ── UI ──
+function setResult(type,name,id,ws,sub){
+  document.getElementById('resultCard').className='result-card '+type;
+  document.getElementById('rIcon').className='result-icon '+type;
+  document.getElementById('rIcon').textContent={pass:'✓',fail:'✗',warn:'⚠',idle:'📷'}[type]||'?';
+  document.getElementById('rName').textContent=name;
+  document.getElementById('rName').style.color='';
+  document.getElementById('rId').textContent=id;
+  const wsEl=document.getElementById('rWs');
+  wsEl.textContent=ws;wsEl.className='r-ws '+type;
+  document.getElementById('rSub').textContent=sub;
+  document.getElementById('rTime').textContent=id?new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',second:'2-digit'}):'';
+}
+
+function addLog(type,name,id,ws,label){
+  const time=new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+  const key=id+'-'+curDay+'-'+curSession;
+  scanLog.unshift({key,type,name,id,ws,label,time,result:type==='pass'?'pass':type});
+  const list=document.getElementById('logList');
+  const empty=list.querySelector('.log-empty');
+  if(empty)empty.remove();
+  const colors={pass:'var(--green)',fail:'var(--red)',warn:'#d97706'};
+  const bgmap={pass:'var(--green-bg)',fail:'var(--red-bg)',warn:'var(--yellow-bg)'};
+  const item=document.createElement('div');
+  item.className='log-item';
+  item.innerHTML=`
+    <div class="log-dot" style="background:${colors[type]||'#aaa'}"></div>
+    <div class="log-name">${name} <span style="font-weight:400;color:var(--muted);font-size:12px">${id}</span></div>
+    <span class="log-badge" style="background:${bgmap[type]||'#eee'};color:${colors[type]||'#999'}">${label}</span>
+    <div class="log-meta">${ws||'—'}<br>${time}</div>`;
+  list.prepend(item);
+  document.getElementById('logCount').textContent=scanLog.length+' 筆';
+}
+
+function updateStats(){
+  document.getElementById('sPass').textContent=nPass;
+  document.getElementById('sFail').textContent=nFail;
+  document.getElementById('sDup').textContent=nDup;
+}
+
+function manualSearch(q){
+  const box=document.getElementById('manualResults');
+  if(!q.trim()){box.classList.add('hidden');return;}
+  const hits=scanLog.filter(l=>l.name.includes(q)||l.id.includes(q)).slice(0,5);
+  if(!hits.length){box.classList.add('hidden');return;}
+  const colors={pass:'var(--green)',fail:'var(--red)',warn:'#d97706'};
+  box.innerHTML=hits.map(l=>`
+    <div class="manual-item" onclick="pickManual('${l.id}','${l.name}','${l.ws}','${l.result}')">
+      <span><strong>${l.name}</strong> <span style="color:var(--muted);font-size:12px">${l.id}</span></span>
+      <span style="font-size:12px;color:${colors[l.result]||'#aaa'}">${l.label} · ${l.time}</span>
+    </div>`).join('');
+  box.classList.remove('hidden');
+}
+
+function pickManual(id,name,ws,result){
+  document.getElementById('manualResults').classList.add('hidden');
+  document.getElementById('manualInput').value='';
+  setResult(result==='pass'?'pass':'fail',name,id,ws,result==='pass'?'已驗證通過（記錄查詢）':'驗證紀錄：拒絕');
+}
+
+async function writeSheets(id,name,ws,result){
+  if(!gsUrl)return;
+  try{
+    await fetch(gsUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({time:new Date().toLocaleString('zh-TW'),day:curDay,session:curSession,workshop:ws,id,name,result:result==='pass'?'通過':'拒絕'})});
+  }catch(e){console.warn('Sheets:',e);}
+}
+
+async function testGS(){
+  const url=document.getElementById('gsUrl').value.trim();
+  if(!url){showGsStatus('請先填入網址','err');return;}
+  showGsStatus('測試中...','pending');
+  try{
+    await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({time:'test',day:0,session:0,workshop:'test',id:'TEST',name:'測試',result:'test'})});
+    showGsStatus('連線成功 — 請至 Sheets 確認是否出現測試列','ok');
+  }catch(e){showGsStatus('連線失敗：'+e.message,'err');}
+}
+
+function showGsStatus(msg,type){
+  const el=document.getElementById('gsStatus');
+  const dot=type==='ok'?'dot-g':type==='err'?'dot-r':'dot-y';
+  el.className='status-pill '+type;
+  el.innerHTML=`<div class="dot ${dot}"></div><span>${msg}</span>`;
+  el.classList.remove('hidden');
+}
+
+function showGsHelp(){document.getElementById('gsModal').classList.remove('hidden');}
+</script>
+</body>
+</html>

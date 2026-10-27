@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藝術節工作坊 — QR Code 產生器</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f7f6f3; --surface: #fff; --border: rgba(0,0,0,0.1);
+  --border-strong: rgba(0,0,0,0.22); --text: #1a1a1a; --muted: #6b6b6b;
+  --green-bg: #e8f5ee; --green: #1a7a40; --red-bg: #fdecea; --red: #b91c1c;
+  --blue-bg: #e8f0fe; --blue: #1a56b0; --radius: 10px;
+}
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 28px; display: flex; align-items: center; gap: 12px; }
+.logo { width: 30px; height: 30px; background: #1a1a1a; border-radius: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 6px; }
+.logo span { background: white; border-radius: 1px; }
+header h1 { font-size: 15px; font-weight: 700; }
+header p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.main { max-width: 960px; margin: 0 auto; padding: 28px 20px; }
+.step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; }
+.step-header { padding: 14px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: #1a1a1a; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-num.done { background: var(--green); }
+.step-title { font-size: 14px; font-weight: 700; }
+.step-body { padding: 18px; }
+.drop-zone { border: 2px dashed var(--border-strong); border-radius: 8px; padding: 36px 20px; text-align: center; cursor: pointer; transition: all .15s; }
+.drop-zone:hover, .drop-zone.over { border-color: #1a1a1a; background: var(--blue-bg); }
+.drop-icon { font-size: 28px; margin-bottom: 10px; }
+.drop-zone p { font-size: 13px; color: var(--muted); }
+.drop-zone strong { color: var(--text); text-decoration: underline; }
+#fileInput { display: none; }
+.config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field label { display: block; font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .05em; }
+.field input, .field select { width: 100%; padding: 8px 11px; border: 1px solid var(--border-strong); border-radius: 6px; font-size: 13px; background: white; }
+.btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 7px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; transition: opacity .15s; }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.btn-primary { background: #1a1a1a; color: white; }
+.btn-primary:hover:not(:disabled) { opacity: .82; }
+.btn-green { background: var(--green); color: white; }
+.btn-green:hover:not(:disabled) { opacity: .85; }
+.btn-outline { background: white; color: var(--text); border: 1px solid var(--border-strong); }
+.btn-outline:hover:not(:disabled) { background: var(--bg); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.alert { padding: 10px 14px; border-radius: 7px; font-size: 13px; margin-bottom: 12px; }
+.alert-red { background: var(--red-bg); color: var(--red); }
+.alert-green { background: var(--green-bg); color: var(--green); }
+.alert-blue { background: var(--blue-bg); color: var(--blue); }
+.hidden { display: none !important; }
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px; }
+.stat { background: var(--bg); border-radius: 8px; padding: 12px 14px; }
+.stat-val { font-size: 22px; font-weight: 700; }
+.stat-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.preview-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.preview-table th { background: var(--bg); padding: 7px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+.preview-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.preview-table tr:last-child td { border-bottom: none; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.tag-blue { background: var(--blue-bg); color: var(--blue); }
+.progress-wrap { margin-bottom: 14px; }
+.progress-bar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width .25s; }
+.progress-label { font-size: 12px; color: var(--muted); margin-top: 5px; }
+.qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.qr-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+.qr-card img { border: 1px solid var(--border); border-radius: 4px; display: block; margin: 0 auto; }
+.qr-name { font-size: 13px; font-weight: 700; margin-top: 9px; }
+.qr-id { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.qr-schedule { margin-top: 8px; font-size: 11px; color: var(--muted); text-align: left; line-height: 1.7; }
+.qr-day { font-weight: 700; color: #444; margin-top: 5px; }
+@media print {
+  header, #step1, #step2, #step3 .step-header, .actions, .progress-wrap { display: none !important; }
+  #step3 { border: none !important; }
+  .step-body { padding: 0 !important; }
+  .qr-grid { grid-template-columns: repeat(4,1fr) !important; gap: 10px !important; }
+  .qr-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span></span><span></span><span></span><span></span></div>
+  <div>
+    <h1>藝術節工作坊 QR Code 產生器</h1>
+    <p>匯入選課 Excel → 自動產生每人專屬 QR Code</p>
+  </div>
+</header>
+
+<div class="main">
+
+<div class="step" id="step1">
+  <div class="step-header">
+    <div class="step-num" id="num1">1</div>
+    <div class="step-title">上傳 Excel 選課表</div>
+  </div>
+  <div class="step-body">
+    <div class="drop-zone" id="dropzone" onclick="document.getElementById('fileInput').click()">
+      <div class="drop-icon">📄</div>
+      <p>拖曳 Excel 到這裡，或 <strong>點擊選擇檔案</strong></p>
+      <p style="margin-top:5px;font-size:11px">支援 .xlsx、.xls</p>
+    </div>
+    <input type="file" id="fileInput" accept=".xlsx,.xls" onchange="handleFile(this.files[0])">
+    <div id="fileAlert" class="hidden" style="margin-top:12px"></div>
+    <div id="previewWrap" class="hidden" style="margin-top:14px">
+      <div class="stats" id="statsBox"></div>
+      <div style="overflow:auto;max-height:260px;border:1px solid var(--border);border-radius:8px">
+        <table class="preview-table" id="previewTable"></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step" id="step2">
+  <div class="step-header">
+    <div class="step-num" id="num2">2</div>
+    <div class="step-title">確認設定</div>
+  </div>
+  <div class="step-body">
+    <div class="config-grid">
+      <div class="field">
+        <label>活動名稱</label>
+        <input type="text" id="eventName" value="2025 藝術節工作坊">
+      </div>
+      <div class="field">
+        <label>天數</label>
+        <select id="numDays"><option value="4" selected>4 天</option><option value="3">3 天</option></select>
+      </div>
+      <div class="field">
+        <label>每天時段數</label>
+        <select id="numSessions"><option value="4" selected>4 個時段</option><option value="3">3 個</option><option value="5">5 個</option></select>
+      </div>
+      <div class="field">
+        <label>QR Code 尺寸</label>
+        <select id="qrSize"><option value="160">小（160px）</option><option value="200" selected>標準（200px）</option><option value="260">大（260px）</option></select>
+      </div>
+    </div>
+    <div class="alert alert-blue" style="margin-top:14px">
+      欄位順序：第 1 欄學員編號、第 2 欄姓名，之後依序 D1-S1、D1-S2、D1-S3、D1-S4、D2-S1 … D4-S4（共 16 欄）
+    </div>
+  </div>
+</div>
+
+<div class="step" id="step3">
+  <div class="step-header">
+    <div class="step-num" id="num3">3</div>
+    <div class="step-title">產生 QR Code</div>
+  </div>
+  <div class="step-body">
+    <div class="actions">
+      <button class="btn btn-primary" id="btnGenerate" onclick="generateAll()" disabled>▶ 開始產生</button>
+      <button class="btn btn-green hidden" id="btnPrint" onclick="window.print()">🖨 列印全部</button>
+      <button class="btn btn-outline hidden" id="btnDownload" onclick="downloadAll()">⬇ 下載全部 ZIP</button>
+    </div>
+    <div id="progressWrap" class="progress-wrap hidden">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label" id="progressLabel">準備中...</div>
+    </div>
+    <div class="qr-grid" id="qrGrid"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+let students = [];
+
+const dz = document.getElementById('dropzone');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('over'));
+dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over'); e.dataTransfer.files[0] && handleFile(e.dataTransfer.files[0]); });
+
+function handleFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = new Uint8Array(e.target.result);
+      const wb = XLSX.read(data, { type: 'array' });
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+      parseStudents(rows);
+    } catch(err) {
+      showAlert('fileAlert', '讀取失敗：' + err.message, 'red');
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function parseStudents(rows) {
+  const days = +document.getElementById('numDays').value;
+  const sess = +document.getElementById('numSessions').value;
+  const dataRows = rows.filter((r, i) => i > 0 && String(r[0]).trim() && String(r[1]).trim());
+
+  if (!dataRows.length) {
+    showAlert('fileAlert', '找不到學員資料。確認第 1 列是標題列，第 2 列起為學員，第 1 欄為編號、第 2 欄為姓名。', 'red');
+    return;
+  }
+
+  students = dataRows.map(row => {
+    const sched = {};
+    let col = 2;
+    for (let d = 1; d <= days; d++) {
+      sched[d] = {};
+      for (let s = 1; s <= sess; s++) { sched[d][s] = String(row[col] || '').trim(); col++; }
+    }
+    return { id: String(row[0]).trim(), name: String(row[1]).trim(), schedule: sched };
+  });
+
+  showAlert('fileAlert', `✓ 成功讀取 ${students.length} 位學員`, 'green');
+  renderPreview(days, sess);
+  document.getElementById('btnGenerate').disabled = false;
+  document.getElementById('num1').classList.add('done');
+  document.getElementById('num1').textContent = '✓';
+}
+
+function renderPreview(days, sess) {
+  document.getElementById('statsBox').innerHTML = `
+    <div class="stat"><div class="stat-val">${students.length}</div><div class="stat-lbl">學員人數</div></div>
+    <div class="stat"><div class="stat-val">${days}</div><div class="stat-lbl">活動天數</div></div>
+    <div class="stat"><div class="stat-val">${days * sess}</div><div class="stat-lbl">總時段數</div></div>`;
+
+  let html = '<thead><tr><th>編號</th><th>姓名</th>';
+  for (let d = 1; d <= days; d++) for (let s = 1; s <= sess; s++) html += `<th>D${d}-S${s}</th>`;
+  html += '</tr></thead><tbody>';
+  students.slice(0, 5).forEach(st => {
+    html += `<tr><td><span class="tag tag-blue">${st.id}</span></td><td>${st.name}</td>`;
+    for (let d = 1; d <= days; d++) for (let s = 1; s <= sess; s++)
+      html += `<td>${st.schedule[d][s] || '<span style="color:#ccc">—</span>'}</td>`;
+    html += '</tr>';
+  });
+  if (students.length > 5) html += `<tr><td colspan="99" style="text-align:center;padding:9px;color:var(--muted);font-size:12px">⋯ 還有 ${students.length - 5} 位學員</td></tr>`;
+  html += '</tbody>';
+  document.getElementById('previewTable').innerHTML = html;
+  document.getElementById('previewWrap').classList.remove('hidden');
+}
+
+function showAlert(id, msg, type) {
+  const el = document.getElementById(id);
+  el.className = 'alert alert-' + type;
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+
+function buildPayload(st, days, sess, eventName) {
+  // Keep it compact: only store short keys
+  const s = {};
+  for (let d = 1; d <= days; d++) {
+    s[d] = {};
+    for (let k = 1; k <= sess; k++) s[d][k] = st.schedule[d][k] || '';
+  }
+  return JSON.stringify({ e: eventName, i: st.id, n: st.name, s });
+}
+
+async function generateAll() {
+  if (!students.length) return;
+  const days = +document.getElementById('numDays').value;
+  const sess = +document.getElementById('numSessions').value;
+  const size = +document.getElementById('qrSize').value;
+  const eventName = document.getElementById('eventName').value;
+
+  document.getElementById('progressWrap').classList.remove('hidden');
+  document.getElementById('btnGenerate').disabled = true;
+  document.getElementById('qrGrid').innerHTML = '';
+
+  for (let i = 0; i < students.length; i++) {
+    const st = students[i];
+    document.getElementById('progressFill').style.width = Math.round(i / students.length * 100) + '%';
+    document.getElementById('progressLabel').textContent = `產生中 ${i + 1} / ${students.length}：${st.name}`;
+    makeCard(st, days, sess, size, eventName);
+    if (i % 10 === 0) await new Promise(r => setTimeout(r, 0));
+  }
+
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressLabel').textContent = `✓ 完成！共產生 ${students.length} 張 QR Code`;
+  document.getElementById('btnPrint').classList.remove('hidden');
+  document.getElementById('btnDownload').classList.remove('hidden');
+  document.getElementById('btnGenerate').disabled = false;
+  document.getElementById('num3').classList.add('done');
+  document.getElementById('num3').textContent = '✓';
+}
+
+function makeCard(st, days, sess, size, eventName) {
+  const payload = buildPayload(st, days, sess, eventName);
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=' + size + 'x' + size +
+    '&data=' + encodeURIComponent(payload) + '&ecc=M&margin=2&format=png';
+
+  const card = document.createElement('div');
+  card.className = 'qr-card';
+  card.dataset.idx = students.indexOf(st);
+
+  const img = document.createElement('img');
+  img.width = size; img.height = size;
+  img.alt = st.name;
+  img.crossOrigin = 'anonymous';
+  img.src = qrUrl;
+  img.onerror = () => { img.alt = '⚠ QR 載入失敗（請檢查網路）'; img.style.background = '#fdecea'; };
+
+  const name = document.createElement('div');
+  name.className = 'qr-name'; name.textContent = st.name;
+
+  const id = document.createElement('div');
+  id.className = 'qr-id'; id.textContent = st.id;
+
+  const sched = document.createElement('div');
+  sched.className = 'qr-schedule';
+  let html = '';
+  for (let d = 1; d <= days; d++) {
+    html += `<div class="qr-day">第 ${d} 天</div>`;
+    for (let k = 1; k <= sess; k++) html += `<div style="padding-left:8px">時段 ${k}：${st.schedule[d][k] || '—'}</div>`;
+  }
+  sched.innerHTML = html;
+
+  card.append(img, name, id, sched);
+  document.getElementById('qrGrid').appendChild(card);
+}
+
+async function downloadAll() {
+  if (!window.JSZip) {
+    await new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+      s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+  const zip = new JSZip();
+  const imgs = document.querySelectorAll('.qr-card img');
+  const promises = Array.from(imgs).map((img, i) => {
+    const st = students[i];
+    return fetch(img.src)
+      .then(r => r.blob())
+      .then(blob => {
+        zip.file(st.id + '_' + st.name + '.png', blob);
+      })
+      .catch(() => {});
+  });
+  await Promise.all(promises);
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '藝術節_QR_codes.zip';
+  a.click();
+}
+</script>
+</body>
+</html>

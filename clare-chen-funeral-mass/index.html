@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>2022_06_04(六)9:30AM陳鳳文姊妹殯葬彌撒直播 (Clare Chen- Funeral Mass Live Broadcast)</title>
+<style>
+html, body {
+  background-color: black;
+}
+video {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+</style>
+    </head>
+    <body>
+        <script src="hls.min.js"></script>
+        <video id="video" controls autoplay muted></video>
+        <script>
+            var video = document.getElementById("video");
+            var videoSrc = "hls/index.m3u8";
+            // First check for native browser HLS support
+            if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                video.src = videoSrc;
+            }
+            // If no native HLS support, check if hls.js is supported
+            else if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+            }
+
+function playVideo(startTime, endTime) {
+
+    function checkTime() {
+        if (video.currentTime >= endTime) {
+           video.pause();
+        } else {
+           /* call checkTime every 1/10th
+              second until endTime */
+           setTimeout(checkTime, 100);
+        }
+    }
+
+    /* stop if playing (otherwise ignored) */
+    video.pause();
+    /* set video start time */
+    video.currentTime = startTime;
+    /* play video */
+    video.play();
+    /* check the current time and
+       pause IF/WHEN endTime is reached */
+    checkTime();
+}
+        </script>
+	<!--div>
+	  <ul>
+	    <li><a href='javascript:playVideo(900,1000);'>彌撒開始</a></li>
+	    <li><a href='javascript:playVideo(5780,6930);'>公祭</a></li>
+	  </ul>
+	</div-->
+    </body>
+</html>

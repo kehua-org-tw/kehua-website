@@ -1,0 +1,374 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	/* font-family: 'cwTeXHei';*/
+   /* src: url(NotoSansTC-Light.otf);*/
+	font-family: "微軟正黑體", " Adobe 繁黑體 Std B", Arial;
+	src: url(MSJH.TTC);
+}
+/* 引用嵌入字型 */
+body {
+	/* font-family:'cwTeXHei', Arial;*/
+	font-family: "微軟正黑體", " Adobe 繁黑體 Std B", Arial;
+	margin: 0 auto;
+	padding: 0;
+	background:#EFEFEF;
+	
+}
+header, section, footer, aside, nav, main, article, figure {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto;
+}
+#text1 {
+	animation: fadein 3s;
+	-moz-animation: fadein 3s; /* Firefox */
+	-webkit-animation: fadein 3s; /* Safari and Chrome */
+	-o-animation: fadein 3s; /* Opera */
+}
+#bpic {
+	animation: fadein 4s;
+	-moz-animation: fadein 4s; /* Firefox */
+	-webkit-animation: fadein 4s; /* Safari and Chrome */
+	-o-animation: fadein 4s; /* Opera */
+}
+#bdialog {
+	animation: fadein 5s;
+	-moz-animation: fadein 5s; /* Firefox */
+	-webkit-animation: fadein 5s; /* Safari and Chrome */
+	-o-animation: fadein 5s; /* Opera */
+}
+.t1 {
+	animation: fadein 2s;
+	-moz-animation: fadein 2s; /* Firefox */
+	-webkit-animation: fadein 2s; /* Safari and Chrome */
+	-o-animation: fadein 2s; /* Opera */
+}
+.t2 {
+	animation: fadein 3s;
+	-moz-animation: fadein 3s; /* Firefox */
+	-webkit-animation: fadein 3s; /* Safari and Chrome */
+	-o-animation: fadein 3s; /* Opera */
+}
+.t3 {
+	animation: fadein 4s;
+	-moz-animation: fadein 4s; /* Firefox */
+	-webkit-animation: fadein 4s; /* Safari and Chrome */
+	-o-animation: fadein 4s; /* Opera */
+}
+.t4 {
+	animation: fadein 5s;
+	-moz-animation: fadein 5s; /* Firefox */
+	-webkit-animation: fadein 5s; /* Safari and Chrome */
+	-o-animation: fadein 5s; /* Opera */
+}
+.t5 {
+	animation: fadein 6s;
+	-moz-animation: fadein 6s; /* Firefox */
+	-webkit-animation: fadein 6s; /* Safari and Chrome */
+	-o-animation: fadein 6s; /* Opera */
+}
+.t6 {
+	animation: fadein 7s;
+	-moz-animation: fadein 7s; /* Firefox */
+	-webkit-animation: fadein 7s; /* Safari and Chrome */
+	-o-animation: fadein 7s; /* Opera */
+}
+.t7 {
+	animation: fadein 8s;
+	-moz-animation: fadein 8s; /* Firefox */
+	-webkit-animation: fadein 8s; /* Safari and Chrome */
+	-o-animation: fadein 8s; /* Opera */
+}
+.t8 {
+	animation: fadein 12s;
+	-moz-animation: fadein 12s; /* Firefox */
+	-webkit-animation: fadein 12s; /* Safari and Chrome */
+	-o-animation: fadein 12s; /* Opera */
+}
+.t8 {
+	animation: fadein 12s;
+	-moz-animation: fadein 12s; /* Firefox */
+	-webkit-animation: fadein 12s; /* Safari and Chrome */
+	-o-animation: fadein 12s; /* Opera */
+}
+.second {
+	width: 100%;
+	font-size: 26px;
+	color: #000000;	
+	/*line-height: 50px;*/
+	font-weight: 500;	
+}
+.third {
+	background: #FCE6D8;
+	height: auto;
+	width:100%;	
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.forth {
+	background: #FCD3B5;
+	height: auto;
+	width: 100%;	
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.fifth {
+	background: #FCE6D8;
+	height: auto;
+	width: 100%;	
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.sixth {
+	background: #FCD3B5;
+	height: auto;
+	width: 100%;	
+	padding-top: 0%;
+	padding-bottom:1%;
+}
+
+/*Div Grid*//* IE 不適用*/
+/*.wrapper {
+	width:100%;
+	display: grid;
+	grid-gap: 2px;
+	grid-template-columns: repeat(5, 19%);
+}*/
+.box {
+	/*background-color: #444;*/
+	color: #000;
+	/*border-radius: 5px;*/
+	padding: 20px;
+	font-size:22px;	
+	/*letter-spacing:3px;line-height:30px;*/
+	/*borer-right:2px solid #E26207;*/
+}
+.box:nth-child(even) {
+	/*background-color: #ccc;*/
+	color: #000;	
+}
+/**/
+
+/*Div Table*/
+.wrapper{
+width:100%;
+/*display:table;*/
+margin:0 auto;
+height:auto;
+}
+.css_tr{
+      /*display: table-row;*/width:320px;float:left;font-size:140%;font-weight:500;letter-spacing:3px;line-height:35px;padding:25px 0px 50px 26px;
+  }
+.css_td {
+      /*display: table-cell;*/color:#000000;font-size:26px;font-weight:500;padding:30px;letter-spacing:3px;line-height:35px;
+}
+
+/**/
+
+
+.first1 {
+	width: 100%;
+	height: auto;
+	background-color: #FCD3B5;
+	/*font-size: 26px;*/
+	font-size:170%;
+	font-weight: 500;
+	/*padding-bottom:2%;*/
+}
+.second1 {
+	margin-top:-0.5%;
+	width: 100%;
+	height: 1420px;
+	background: url( '../images/back2-1920x1420.jpg') no-repeat;
+	background-position: center;
+	background-size: cover;
+	/*font-size:150%;*/
+	/*font-size: 22px;*/
+	/*font-weight: 500;*/
+	color: #ffffff;
+	position: relative;
+}
+
+.text2 {
+	font-size: 32px;
+	font-weight: 500;
+	position: absolute;
+	left: 42.5%;
+	top: 17%;
+	letter-spacing: 3px;
+}
+.footer {
+	height: auto;
+	background: #ffffff;
+	padding-top: 1%;
+	padding-bottom: 1%
+}
+.mask {
+	width: 100%;
+	position: absolute;
+	z-index: 2;
+	margin: 0;
+	padding: 0;
+	left: 0;
+	/*top:0;*/
+	box-shadow: 0px 8px 18px -8px #666666;
+	-webkit-box-shadow: 0px 8px 18px -8px #666666;
+	-moz-box-shadow: 0px 8px 18px -8px #666666;
+}
+.mask2 {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	width: 100%;
+	height: auto;
+	background: rgba(0,0,0,0.8);
+	/*background-color: rgb(0, 0, 0); */
+	filter: alpha(opacity=80); /*ie透明度20%*/
+	-moz-opacity: 0.8;        /*Moz + FF 透明度20%*/
+	opacity: 0.8; /*支持CSS3的浏览器(FF1.5也支持)透明度20%*/
+	letter-spacing: 3px;
+}
+.mask2 p {
+	color: #fff;
+	font-family: '微軟正黑體';
+	text-align: center;
+	font-size: 18px;
+	font-weight: 300
+}
+
+.mask3 {
+	/*position: absolute;*/
+	/*bottom: 0px;
+	right: 0px;*/	
+	/*margin:0 auto;*/
+	padding-top:0%;
+	padding-bottom:0%;
+	width: 100%;
+	height:380px;
+	background: rgba(0,0,0,0.85);
+	/*background-color: rgb(0, 0, 0); */
+	filter: alpha(opacity=85); /*ie透明度20%*/
+	-moz-opacity: 0.85;        /*Moz + FF 透明度20%*/
+	opacity: 0.85; /*支持CSS3的浏览器(FF1.5也支持)透明度20%*/
+	letter-spacing:2px;
+	font-size:1.05em;
+}
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 120%;
+	/*font-weight: bold;*/
+	font-family: "微軟正黑體", " Adobe 繁黑體 Std B", Arial;
+	margin: 4px 20px 4px 20px;
+	-webkit-transition-duration: 0.9s; /* Safari */
+	transition-duration: 0.9s;
+	cursor: pointer;
+	letter-spacing: 3px;
+	outline: none;
+	animation: fadein 6s;
+	-moz-animation: fadein 6s; /* Firefox */
+	-webkit-animation: fadein 6s; /* Safari and Chrome */
+	-o-animation: fadein 6s; /* Opera */
+}
+.button1 {
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+}
+.button1:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+.button2 {
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+}
+.button2:hover {
+	background-color: #008CBA;
+	color: white;
+}
+.button3 {
+	background-color: #FCD3B5;
+	color: #ffffff;
+	border: 2px solid #ffffff;
+}
+.button3:hover {
+	background-color: #E26207;
+	color: white;
+	border: 2px solid #E26207;
+}
+.button4 {
+	background-color: #FCE6D8;
+	color: #E26207;
+	border: 2px solid #E26207;
+}
+.button4:hover {
+	background-color: #E26207;
+	color: #ffffff;
+}
+.button5 {
+	background-color: white;
+	color: #E26207;
+	border: 2px solid #E26207;
+}
+.button5:hover {
+	background-color: #E26207;
+	color: white;
+}
+.button6 {
+	/*background-color: #F99A21;*/
+	background-color: transparent;
+	color: white;
+	border: 2px solid #ffffff;
+}
+.button6:hover {
+	background-color: #E76207;
+	/*color: #F99A21;*/
+	color: #ffffff;
+}
+ @keyframes fadein {
+ from {
+ opacity:0;
+}
+ to {
+ opacity:1;
+}
+}
+@-moz-keyframes fadein { /* Firefox */
+ from {
+ opacity:0;
+}
+ to {
+ opacity:1;
+}
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+ from {
+ opacity:0;
+}
+ to {
+ opacity:1;
+}
+}
+@-o-keyframes fadein { /* Opera */
+ from {
+ opacity:0;
+}
+ to {
+ opacity: 1;
+}
+}

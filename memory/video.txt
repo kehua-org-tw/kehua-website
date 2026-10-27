@@ -1,0 +1,5 @@
+<!-- 嵌入影片代碼 (請刪除語法中 'width' 跟 'height')-->
+
+<iframe src="https://www.youtube.com/embed/bcm0Ekv6wLw?si=66ngtkZHfUWYd_ZS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!-- 结束 -->
