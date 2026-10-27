@@ -1,9 +1,9 @@
 /*
- * 補助專區畫面：讀取 subsidy/data.js 的內容並產生頁面。
- * 內容請改 subsidy/data.js，不需要改這個檔案。
+ * 補助專區畫面：讀取 subsidy/data/*.json 的內容並產生頁面。
+ * 內容請用 Pages CMS 後台編輯（設定在 .pages.yml），不需要改這個檔案。
  */
 (function ($) {
-  var data = window.SUBSIDY_DATA || {};
+  var CATEGORY_ORDER = ["辦法", "簡章", "申請表格", "其他"];
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -16,8 +16,24 @@
       (cls ? ' class="' + cls + '"' : "") + ">" + esc(text) + "</a>";
   }
 
-  function renderNews() {
-    var list = data.news || [];
+  function asList(v) {
+    if (!v) return [];
+    return $.isArray(v) ? v : [v];
+  }
+
+  // 後台存檔後要馬上看到新內容，所以不用瀏覽器快取
+  function load(name) {
+    return $.ajax({ url: "subsidy/data/" + name + ".json", dataType: "json", cache: false });
+  }
+
+  function failed($el) {
+    $el.html('<div class="sub-pending">內容讀取失敗，請稍後再試。</div>');
+  }
+
+  function renderNews(data) {
+    var list = (data.items || []).slice().sort(function (a, b) {
+      return String(b.date || "").localeCompare(String(a.date || ""));
+    });
     var $t = $("#sub-news-list");
     if (!list.length) {
       $t.append('<tr><td class="sub-pending">目前沒有公告。</td></tr>');
@@ -25,7 +41,7 @@
     }
     $.each(list, function (i, n) {
       var body = esc(n.content);
-      var links = n.links || [];
+      var links = $.grep(n.links || [], function (l) { return l && l.url; });
       if (links.length) {
         body += '<div class="sub-news-links">' + $.map(links, function (l) {
           return link(l.url, l.text || l.url);
@@ -42,11 +58,9 @@
     });
   }
 
-  function renderIntro() {
+  function renderPage(data) {
     $("#sub-intro-text").text(data.intro || "");
-  }
 
-  function renderApply() {
     var a = data.apply || {};
     var $box = $("#sub-apply-box");
     if (!a.open) {
@@ -66,11 +80,10 @@
     $box.html(html);
   }
 
-  function renderResults() {
-    var r = data.results || {};
-    if (!r.visible) return;
+  function renderResults(data) {
+    if (!data.visible) return;
     var $list = $("#sub-results-list");
-    $.each(r.items || [], function (i, it) {
+    $.each(data.items || [], function (i, it) {
       var title = it.url ? link(it.url, it.title) : esc(it.title);
       $list.append(
         '<div class="sub-result"><span class="sub-result-year">' + esc(it.year) + "</span>" + title +
@@ -80,40 +93,46 @@
     $("#sub-results").show();
   }
 
-  function renderDownloads() {
-    var list = data.downloads || [];
+  function fileFormat(path) {
+    var m = /\.([a-z0-9]+)$/i.exec(String(path).split("?")[0]);
+    return m ? m[1].toUpperCase() : "檔案";
+  }
+
+  function renderDownloads(data) {
+    var list = data.items || [];
     var $list = $("#sub-downloads-list");
     if (!list.length) {
       $list.append('<div class="sub-pending">目前沒有可下載的檔案。</div>');
       return;
     }
-    var order = [], groups = {};
+    var groups = {}, order = CATEGORY_ORDER.slice();
     $.each(list, function (i, d) {
       var c = d.category || "其他";
-      if (!groups[c]) { groups[c] = []; order.push(c); }
-      groups[c].push(d);
+      if ($.inArray(c, order) < 0) order.push(c);
+      (groups[c] = groups[c] || []).push(d);
     });
     $.each(order, function (i, c) {
+      if (!groups[c]) return;
       $list.append('<div class="sub-dl-category">' + esc(c) + "</div>");
       $.each(groups[c], function (j, d) {
-        var files = $.map(d.files || [], function (f) {
-          return f.url
-            ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener" download>' + esc(f.format) + " ↓</a>"
-            : '<span title="檔案準備中">' + esc(f.format) + " 準備中</span>";
-        }).join("");
+        var files = asList(d.files);
+        var buttons = files.length
+          ? $.map(files, function (f) {
+              return '<a href="' + esc(f) + '" target="_blank" rel="noopener" download>' + esc(fileFormat(f)) + " ↓</a>";
+            }).join("")
+          : "<span>檔案準備中</span>";
         $list.append(
           '<div class="sub-dl-row"><div class="sub-dl-name">' + esc(d.name) + "</div>" +
-          '<div class="sub-dl-files">' + files + "</div></div>"
+          '<div class="sub-dl-files">' + buttons + "</div></div>"
         );
       });
     });
   }
 
   $(function () {
-    renderNews();
-    renderIntro();
-    renderApply();
-    renderResults();
-    renderDownloads();
+    load("news").done(renderNews).fail(function () { failed($("#sub-news")); });
+    load("page").done(renderPage).fail(function () { failed($("#sub-apply-box")); });
+    load("results").done(renderResults);
+    load("downloads").done(renderDownloads).fail(function () { failed($("#sub-downloads-list")); });
   });
 })(jQuery);

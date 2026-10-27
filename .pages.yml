@@ -1,0 +1,159 @@
+# Pages CMS 後台設定（https://pagescms.org）
+# 定義補助專區後台的表單。內容存在 subsidy/data/*.json，上傳的檔案存在 subsidy/files/。
+
+media:
+  - name: files
+    label: 補助專區檔案
+    input: subsidy/files
+    output: /subsidy/files
+    rename: false
+    extensions: [pdf, doc, docx, odt, xls, xlsx, ods, ppt, pptx, odp, zip, jpg, jpeg, png]
+
+content:
+  - name: subsidy-news
+    label: 補助專區｜最新消息
+    type: file
+    path: subsidy/data/news.json
+    format: json
+    fields:
+      - name: items
+        label: 公告
+        description: 頁面上會依日期自動排序，新的在上面。
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{date}　{title}"
+        fields:
+          - name: date
+            label: 公告日期
+            type: date
+            required: true
+            options:
+              format: yyyy-MM-dd
+          - name: title
+            label: 主旨
+            type: string
+            required: true
+          - name: content
+            label: 內文
+            description: 點主旨後展開的內容。按 Enter 可以換行。
+            type: text
+          - name: links
+            label: 連結
+            description: 顯示在內文下方，可以加多個。
+            type: object
+            list: true
+            fields:
+              - name: text
+                label: 顯示文字
+                type: string
+              - name: url
+                label: 網址
+                type: string
+                required: true
+
+  - name: subsidy-page
+    label: 補助專區｜計畫介紹與申請狀態
+    type: file
+    path: subsidy/data/page.json
+    format: json
+    fields:
+      - name: intro
+        label: 計畫介紹
+        description: 約 200 字。空一行可以分段。
+        type: text
+      - name: apply
+        label: 申請補助
+        type: object
+        fields:
+          - name: open
+            label: 目前是申請期間
+            description: 打開＝顯示申請資訊；關閉＝顯示「目前非申請區間」。
+            type: boolean
+          - name: period
+            label: 申請期別
+            description: 例如：116年第1期
+            type: string
+          - name: dates
+            label: 申請日期
+            description: 例如：116年3月1日至3月31日。不需要可以留空。
+            type: string
+          - name: applyUrl
+            label: 線上申請連結
+            description: 留空時，頁面顯示「線上申請連結準備中」。
+            type: string
+          - name: note
+            label: 補充說明
+            description: 申請期間顯示在下方。不需要可以留空。
+            type: text
+          - name: closedText
+            label: 非申請區間的說明文字
+            type: text
+
+  - name: subsidy-results
+    label: 補助專區｜年度成果呈現
+    type: file
+    path: subsidy/data/results.json
+    format: json
+    fields:
+      - name: visible
+        label: 在網站上顯示這一區
+        description: 獲補助公告、確認時間後再打開。
+        type: boolean
+      - name: items
+        label: 成果
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{year}　{title}"
+        fields:
+          - name: year
+            label: 年度
+            description: 例如：116年
+            type: string
+          - name: title
+            label: 標題
+            type: string
+            required: true
+          - name: content
+            label: 說明
+            type: text
+          - name: url
+            label: 連結
+            description: 例如成果報告或相簿網址。不需要可以留空。
+            type: string
+
+  - name: subsidy-downloads
+    label: 補助專區｜下載專區
+    type: file
+    path: subsidy/data/downloads.json
+    format: json
+    fields:
+      - name: items
+        label: 文件
+        description: 同一份文件的不同格式（PDF、Word、ODT）放在同一筆，網站會依副檔名自動顯示格式按鈕。
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{category}｜{name}"
+        fields:
+          - name: category
+            label: 分類
+            type: select
+            required: true
+            options:
+              values: [辦法, 簡章, 申請表格, 其他]
+          - name: name
+            label: 文件名稱
+            type: string
+            required: true
+          - name: files
+            label: 檔案
+            description: 沒有上傳檔案時，頁面顯示「檔案準備中」。
+            type: file
+            options:
+              media: files
+              multiple: true
