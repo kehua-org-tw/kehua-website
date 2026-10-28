@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-tw"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+<title>科華文教基金會</title>
+<link rel="stylesheet" type="text/css" href="css/dropmenu.css">
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" href="js/flexslider.css" type="text/css" media="screen" /> 
+<script type="text/javascript" src="js/jquery.min_2.1.3.js"></script>
+<!--<script type="text/javascript" src="js/jquery_popup.js"></script>-->
+<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script> 
+<style type="text/css">
+  
+body {
+	margin-top: 0px;
+}
+</style>
+<script type="text/JavaScript">
+<!--
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {	
+    document.getElementById("myDropdown").classList.toggle("show");	 
+}
+	
+$(function() {
+ $('#three').click(function(){
+   /*$("#three").attr('src',"images/icon-close1a-66x66.png");*/
+	$('#three').css('display','none');
+	$('#cross').css('display','block'); 
+   return false;
+	 
+ });
+});
+	
+$(function() {
+ $('#cross').click(function(){
+   $('#cross').css('display','none');
+   $('#three').css('display','block');
+   return false;
+ });
+});
+		
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+</script>
+<style type="text/css">
+<!--
+.black0 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 16px;color: #000000;line-height: 20px; }
+.black1 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 16px;color: #000000;line-height: 30px; }
+.black2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #000000;line-height: 36px; }
+.orange1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #eb6306;line-height: 26px; }
+.orange2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #eb6306;line-height: 26px; }
+.orange3 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 26px;color: #eb6306;line-height: 35px; }
+.white1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #ffffff;line-height: 26px; }
+.white2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 26px; }
+.white3 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 32px; }
+
+.img-demo {
+height:240px;
+overflow:hidden;
+border:5px solid #fff;
+border-radius:25px;
+}
+
+.img-demo img{
+margin-top: 0%;
+}
+	
+/*紀念照片+文字按鈕特效*/	
+ .photo-container {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 15px; /* 圆角 */
+	        border: 6px solid white; /* 白色边框 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影使其更具层次感 */
+        }
+
+        .photo {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .photo-container::before,
+        .photo-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
+
+        .photo-container::before {
+            left: 0;
+        }
+
+        .photo-container::after {
+            right: 0;
+            transform: scaleX(-1); /* 翻转渐变效果 */
+        }	
+	
+	.metal-button {
+            background: linear-gradient(145deg, #2c2c2c, #4a4a4a);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 16px;
+            padding: 15px 40px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metal-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .metal-button:hover::before {
+            top: -150%;
+            left: 150%;
+            transition: all 0.5s ease;
+        }
+
+        .metal-button:hover {
+            background: linear-gradient(145deg, #3a3a3a, #5a5a5a);
+        }
+
+        .metal-button:active {
+            background: linear-gradient(145deg, #1a1a1a, #3a3a3a);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), inset 1px 1px 0 rgba(0, 0, 0, 0.3);
+        }
+-->
+</style>
+</head>
+
+<body onload="MM_preloadImages('images/bt-1b.png','images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png')">
+
+<!--Whole page-->
+<div data-role="page">
+
+<!--header-->
+<div data-role="header" style="background-color:#ffffff;position:fixed;z-index:10;width:100%;text-shadow:none;height:auto;border:0"><script type="text/javascript">
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {	
+    document.getElementById("myDropdown").classList.toggle("show");
+	 
+}
+	
+$(function() {
+ $('#three').click(function(){
+   /*$("#three").attr('src',"images/icon-close1a-66x66.png");*/
+	$('#three').css('display','none');
+	$('#cross').css('display','block'); 	
+   return false;
+	 
+ });
+});
+	
+$(function() {
+ $('#cross').click(function(){
+   $('#cross').css('display','none');
+   $('#three').css('display','block');
+   return false;
+ });
+});
+		
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}		
+
+</script>
+
+ <div style="text-align:center;margin-left:10%;margin-top:2%;margin-bottom:-0.5%;"><img src="images/a-logo-140x99.png" alt="Logo" style="width:22vmin;max-width:140px" />
+    <div style="float:right;margin-right:5%;margin-top:2%">
+    <img src="images/icon-menu1a-66x66.png" id="three" alt="" style="width:10vmin;max-width:66px;display:block" onclick="myFunction()" class="dropbtn"/>
+    <img src="images/icon-close1a-66x66.png" id="cross" alt="" style="width:10vmin;max-width:66px;display:none" onclick="myFunction()" class="dropbtn"/>
+    <div id="myDropdown" class="dropdown-content">
+    <a href="mindex.html" data-ajax="false" rel="external">關於科華</a>
+    <a href="mnews.html" data-ajax="false" rel="external">最新消息</a>
+    <a href="mactivities.html" data-ajax="false" rel="external">藝文深耕</a>
+    <a href="mmedia.html" data-ajax="false" rel="external">影音回顧</a>
+    <a href="malbum.html" data-ajax="false" rel="external">活動相簿</a>
+	<a href="md_file.html" data-ajax="false" rel="external">公開資訊</a>
+    <a href="msupport.html" data-ajax="false" rel="external">支持與贊助</a>    
+    <!--<a href="#contact" data-ajax="false" rel="external">捐款芳名錄</a>-->
+    </div>
+    </div>
+ </div>	
+</div>
+<!---->
+
+<!--main-->
+<div data-role="main" style="margin:0 auto">
+<div align="center" style="padding-top:18%">
+<div class="flexslider">
+          <ul class="slides">
+                <li>
+  	    	    <img src="img/1.jpg"  width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/2.jpg" width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/3.jpg" width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/4.jpg" width="100%"/>
+  	    		</li>
+                <li>
+  	    	    <img src="img/5.jpg" width="100%" />
+  	    		</li>
+                <li>
+  	    	    <img src="img/6.jpg"  width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/7.jpg" width="100%"/>
+  	    		</li>
+  	    		<!--<li>
+  	    	    <img src="img/8.jpg" width="1200"/>
+  	    		</li>-->
+  	    		<li>
+  	    	    <img src="img/9.jpg" width="100%"/>
+  	    		</li>
+                <li>
+  	    	    <img src="img/10.jpg" width="100%" />
+  	    		</li>
+                <li>
+  	    	    <img src="img/11.jpg"  width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/12.jpg" width="100%"/>
+  	    		</li>
+  	    		<li>
+  	    	    <img src="img/13.jpg" width="100%"/>
+  	    		</li>  	    		
+          </ul>
+        </div>
+</div>
+<div align="left" style="width:100%;background-color:#ffc6a0;word-break:break-all; word-wrap:break-word" class="black1"><div style="width:96%;padding-left:2%;text-align:justify;">
+<br/>財團法人科華文教基金會為董事長陳鳳文女士於西元2017年成立，宗旨在於促進人文藝術環境與教育，增進國際藝術交流。<br/><br/>
+						 本基金會以「樂計畫」及「Vocal Asia」為兩大品牌。前者辦理偏鄉音樂會、阿卡貝拉及爵士樂種子教師培訓營、美感教學工作坊、講座音樂會及阿卡貝拉音樂環島計劃—『A Cappella趴趴GO!』；而後者則為陳董事長長年耕耘的阿卡貝拉純人聲跨國平台，其每年主辦的「Vocal Asia Festival」阿卡貝拉國際藝術節，從2011年起於亞洲不同城市辦理，為全亞洲最大規模、最具影響力之阿卡貝拉藝術節。
+						 <br/><br/>
+						 許多重要的東西可以用音樂來傳達，從人聲擴展到各種音樂的形式，目的是希望激起更多的可能性，而『樂』計畫即是音樂人與愛樂人之間的打火石，藉由推廣的方式將更多的音樂形式帶給更多的人，認識進而欣賞喜愛音樂。我們用音樂傳遞人類的良善與美好，用歌聲來連結不同的文化與種族；財團法人科華文教基金會以音樂種子為始，將音樂種子從殿堂帶入偏鄉，從不定點的推廣分享到永續的人才培育，希望藉著音樂的「跨齡、跨界」特性，為臺灣這片土地帶來感動與希望！
+						 <br/><br/>
+						 我們期許自己成為愛樂的農夫，透過各種不同形式的音樂活動，讓愛樂的種子遍地開花。<br/>
+<br/></div>
+<div style="width:100%;background-color:#ffc6a0" align="center">
+<img src="about/bd-000.jpg" width="100%" alt=""/>
+	<br/>
+<!--董事資料開始-->	
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/冰冰3cut.jpg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">劉沁如</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">CJCHT 曦爵集團 董事長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">麥光文創 創辦人</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/嚴總裁(橫式) cut.jpg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">嚴長壽</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">公益平台文化基金會 董事長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">台東縣私立均一實驗高中 董事長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">江賢二藝術文化基金會 董事</td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/李董1 copy.jpg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">李靜芳</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">遠東集團綜效暨零售規劃總部執行長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">遠東巨城購物中心董事長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/趙董照片new.jpg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">趙克中</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">長豐智能科技公司 董事長</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/邱瑗_ 橫式照片cut.png" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">邱瑗</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">國家兩廳院 藝術總監</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/Sharon照片 resize.jpeg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">劉嘉慧</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">曦爵股份有限公司 台北總管理部負責人</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+	
+<br/>
+<div style="width:65%;background-color:#ffc6a0" align="center">
+<div class="img-demo"><img src="direct/侯浩安_照片 resize.jpeg" width="100%" alt=""/></div>
+<div>
+<table width="270" border="0" cellpadding="3" cellspacing="3">
+  <tbody>
+    <tr>
+      <td class="orange3">侯浩安</td>
+    </tr>
+    <tr>
+      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left">香港理工大學 教授</td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+    <tr>
+      <td class="black0" align="left"></td>
+    </tr>
+  </tbody>
+</table>
+</div>			 
+</div>
+
+ 	
+<!--董事資料底部-->	
+
+</div></p>
+
+
+
+<!--<div style="width:98%;" align="center"><img src="images/an-2.png" style="width:100%;max-width:180px"  alt=""/></div></p>
+<div style="width:98%;" align="center"><img src="images/an-3.png" style="width:100%;max-width:180px"  alt=""/></div></p>
+<div style="width:98%;" align="center"><img src="images/an-4.png" style="width:100%;max-width:180px"  alt=""/></div></p>
+<div style="width:98%;" align="center"><img src="images/an-5.png" style="width:100%;max-width:180px"  alt=""/></div></p>-->
+<div style="width: 100%">
+<img src="images/me_002.jpg" width="100%" alt=""/></div>
+<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+                          <td height="25"></td>
+                          </tr>
+                      </table>	
+<div style="width: 90%;padding-left:5%">
+<div class="photo-container"> 
+							<a href="mmemory.html" data-ajax="false"><img src="memory/mem001.jpg" width="100%" alt=""  class="photo"/></a>
+	</div></div>
+
+<div style="width: 90%;padding-left:5%;padding-top:2%">
+			<button class="metal-button" onClick="window.location.href='memory.php';">基金會創辦人 陳鳳文女士 紀念專頁</button></div>	
+<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+                          <td height="25"></td>
+                          </tr>
+                      </table>		
+
+<div align="center" style="padding-bottom:40%;background-color:#ffc6a0"><img src="images/org2.jpg" style="width:100%;max-width:600px"/></div></div>
+<!--footer-->
+<div data-role="footer" style="width:100%;background:#ffffff;height:auto;position:absolute;right:0;bottom:0;box-shadow:none;border:0;padding-top:2%">
+<div align="center" style="width:100%"><a href="https://www.facebook.com/projectm2017" rel="external" data-ajax="false"><img src="images/icon-fb3-72x72.png" style="width:45px" alt=""></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.facebook.com/acappella.love/" rel="external" data-ajax="false"><img src="images/icon-fb4-72x72.png" style="width:45px" alt=""></a></div>
+
+<div align="center" style="width:100%;font-size:13px;letter-spacing:1px;padding-bottom:2%"><div style="padding-bottom:2%">服務專線&nbsp;/&nbsp;02-3393-8591</div><div style="padding-bottom:2%">郵件&nbsp;/&nbsp;<a href="mailto: info@kehua.org.tw" style="color:#000;text-decoration: none"> info@kehua.org.tw</a></div><div style="padding-bottom:2%">地址&nbsp;/&nbsp;10049&nbsp;台北市中正區忠孝東路1段35號11樓&nbsp;<!--<a href="https://goo.gl/maps/FVSrzK4WDB72" target="new"><img src="images/icon-map-43x58.png" style="width:18px" alt=""/></a>--></div></div>
+</div>
+<!---->
+</div>
+
+ <!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+  <!-- Optional FlexSlider Additions -->
+  <script src="js/jquery.easing.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+  <script defer src="js/demo.js"></script>
+<div style="text-align:center;padding:14px 0 26px;font-size:14px"><a href="/index.html?desktop=1" style="color:#8a6b46;text-decoration:none">電腦版</a></div>
+</body>
+</html>

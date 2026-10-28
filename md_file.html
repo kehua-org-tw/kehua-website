@@ -1,0 +1,855 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-tw"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+<title>科華文教基金會</title>
+<link rel="stylesheet" type="text/css" href="css/dropmenu.css">
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.structure-1.4.5.min.css" />
+<script type="text/javascript" src="js/jquery.min_2.1.3.js"></script>
+<!--<script type="text/javascript" src="js/jquery_popup.js"></script>-->
+<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>    
+<script type="text/JavaScript">
+<!--
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {	
+    document.getElementById("myDropdown").classList.toggle("show");	 
+}
+	
+$(function() {
+ $('#three').click(function(){
+   /*$("#three").attr('src',"images/icon-close1a-66x66.png");*/
+	$('#three').css('display','none');
+	$('#cross').css('display','block'); 
+   return false;
+	 
+ });
+});
+	
+$(function() {
+ $('#cross').click(function(){
+   $('#cross').css('display','none');
+   $('#three').css('display','block');
+   return false;
+ });
+});
+		
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function content(id){
+$(document).ready(function(){
+            
+                $("#"+id).slideToggle("slow");
+          
+        });
+}
+//-->
+</script>
+<style type="text/css">
+div > img {height:auto;max-width:100%;}
+.black1 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 16px;color: #000000;line-height: 26px; }
+.black2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #000000;line-height: 32px; }
+.orange1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #eb6306;line-height: 26px; }
+.orange2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #eb6306;line-height: 26px; }
+.white1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #ffffff;line-height: 26px; }
+.white2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 26px; }
+.white3 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 32px; }
+.news {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:1.05em;letter-spacing:2px;color: #000000;line-height:25px; text-decoration:none }
+</style>
+</head>
+
+<body onload="MM_preloadImages('images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png')">
+<!--Whole page-->
+<div data-role="page">
+
+<!--header-->
+<div data-role="header" style="background-color:#ffffff;position:fixed;z-index:10;width:100%;text-shadow:none;height:auto;border:0"><script type="text/javascript">
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {	
+    document.getElementById("myDropdown").classList.toggle("show");
+	 
+}
+	
+$(function() {
+ $('#three').click(function(){
+   /*$("#three").attr('src',"images/icon-close1a-66x66.png");*/
+	$('#three').css('display','none');
+	$('#cross').css('display','block'); 	
+   return false;
+	 
+ });
+});
+	
+$(function() {
+ $('#cross').click(function(){
+   $('#cross').css('display','none');
+   $('#three').css('display','block');
+   return false;
+ });
+});
+		
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}		
+
+</script>
+
+ <div style="text-align:center;margin-left:10%;margin-top:2%;margin-bottom:-0.5%;"><img src="images/a-logo-140x99.png" alt="Logo" style="width:22vmin;max-width:140px" />
+    <div style="float:right;margin-right:5%;margin-top:2%">
+    <img src="images/icon-menu1a-66x66.png" id="three" alt="" style="width:10vmin;max-width:66px;display:block" onclick="myFunction()" class="dropbtn"/>
+    <img src="images/icon-close1a-66x66.png" id="cross" alt="" style="width:10vmin;max-width:66px;display:none" onclick="myFunction()" class="dropbtn"/>
+    <div id="myDropdown" class="dropdown-content">
+    <a href="mindex.html" data-ajax="false" rel="external">關於科華</a>
+    <a href="mnews.html" data-ajax="false" rel="external">最新消息</a>
+    <a href="mactivities.html" data-ajax="false" rel="external">藝文深耕</a>
+    <a href="mmedia.html" data-ajax="false" rel="external">影音回顧</a>
+    <a href="malbum.html" data-ajax="false" rel="external">活動相簿</a>
+	<a href="md_file.html" data-ajax="false" rel="external">公開資訊</a>
+    <a href="msupport.html" data-ajax="false" rel="external">支持與贊助</a>    
+    <!--<a href="#contact" data-ajax="false" rel="external">捐款芳名錄</a>-->
+    </div>
+    </div>
+ </div>	
+</div>
+<!---->
+
+<!--main-->
+<div data-role="main" style="margin:0 auto">
+<div align="center" style="padding-top:18%"><img src="images/md_file.jpg" style="width:100%;max-width:600px"/></div>
+<div align="center" style="width:100%;">
+
+	<div style="width:100%;height:75px;background-color:#ffc6a0;font-family: Microsoft JhengHei,helvetica,sans-serif;color:#000000;font-size:20px;">
+	<div style="padding-top:20px">歷年工作報告&nbsp;&nbsp;<img src="images/paper.png" width="25" height="25" alt=""/></div></div>
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+		
+<!--歷年工作報告-->  
+	
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2026-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年度工作報告書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年度工作報告書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-07-03</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年度工作報告書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-06-13</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度工作報告書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-07-18</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">110年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/110年度工作報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-06-28</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">109年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/109年度工作報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-07-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">108年度工作報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/108年度工作報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+			
+<!---->		
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+	
+	
+	<div style="width:100%;height:75px;background-color:#ffc6a0;font-family: Microsoft JhengHei,helvetica,sans-serif;color:#000000;font-size:20px;">
+	<div style="padding-top:20px">歷年財務報表&nbsp;&nbsp;<img src="images/paper.png" width="25" height="25" alt=""/></div></div>
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+		
+<!--歷年財務報表-->    
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2026-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2026-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-07-03</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-07-03</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-06-13</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-06-13</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-07-18</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">110年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/110年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-07-18</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">110年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/110年度財務報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-06-28</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">109年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/109年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-06-28</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">109年度財務報表附註揭露</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/109年度財務報表附註揭露.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+       <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-07-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">108年度財務報表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/108年度財務報表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<!---->		
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>	
+	
+	<div style="width:100%;height:75px;background-color:#ffc6a0;font-family: Microsoft JhengHei,helvetica,sans-serif;color:#000000;font-size:20px;">
+	<div style="padding-top:20px">歷年捐贈名單清冊&nbsp;&nbsp;<img src="images/paper.png" width="25" height="25" alt=""/></div></div>
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+		
+<!--歷年捐贈名單清冊-->    
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2026-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-06-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-07-03</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-06-13</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-07-18</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">110年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/110年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-06-28</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">109年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/109年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+		
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+     <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-07-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">108年捐贈名單清冊</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/108年捐贈名單清冊.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+			
+<!---->		
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+	
+	<div style="width:100%;height:75px;background-color:#ffc6a0;font-family: Microsoft JhengHei,helvetica,sans-serif;color:#000000;font-size:20px;">
+	<div style="padding-top:20px">其他&nbsp;&nbsp;<img src="images/paper.png" width="25" height="25" alt=""/></div></div>
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+		
+<!--其他-->    
+	
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2026-04-07</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-12-26</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">115年度經費預算表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/115年度經費預算表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-12-26</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">115年度工作計畫書</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/115年度工作計畫書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2025-06-02</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113 年執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-12-27</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度工作計畫書</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年度工作計畫書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-12-27</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">114年度經費預算表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/114年度經費預算表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2024-04-24</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112 年執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-12-22</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年經費預算表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年度經費預算表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-12-22</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">113年工作計劃書</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/113年度工作計劃書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2023-03-21</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-12-30</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度工作計劃書</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年度工作計畫書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-12-30</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">112年度經費預算表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/112年度經費預算表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2022-02-11</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">110年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/110年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-12-21</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度經費預算表</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度經費預算表.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-12-21</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">111年度工作計劃書</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/111年度工作計劃書.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2021-07-08</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">109年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/109年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-12-29</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">107年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/107年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-12-29</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">108年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/108年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<table width="98%" border="0">
+  <tbody>
+    <tr>
+      <td width="30%" align="left" style="font-family:Arial;font-size:18px;color:#eb6306;padding-top:8px">2020-12-28</td>
+      <td width="60%"  height="45" align="left" style="font-family: Microsoft JhengHei;font-size:18px;color:#333333;">106年度執行報告</td>
+      <td width="10%" align="right"><a href="http://www.kehua.org.tw/2019kehua/dfile/106年度執行報告.pdf" target="new"><img src="images/download.png" width="30" height="30" alt="下載文件"/></a></td>
+    </tr>
+  </tbody>
+</table>
+	
+	<div style="width:98%;border-bottom-style:dashed;border-bottom-color: #cccccc;border-bottom-width:1px"></div><br/>
+
+	
+<!---->		
+		
+	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20"></td>
+        </tr>
+    </table>
+</div>
+<!--footer-->
+<div data-role="footer" style="width:100%;background:#ffffff;height:auto;right:0;bottom:0;box-shadow:none;border:0;padding-top:2%">
+<div align="center" style="width:100%"><a href="https://www.facebook.com/projectm2017" rel="external" data-ajax="false"><img src="images/icon-fb3-72x72.png" style="width:45px" alt=""></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.facebook.com/acappella.love/" rel="external" data-ajax="false"><img src="images/icon-fb4-72x72.png" style="width:45px" alt=""></a></div>
+
+<div align="center" style="width:100%;font-size:13px;letter-spacing:1px;padding-bottom:2%"><div style="padding-bottom:2%">服務專線&nbsp;/&nbsp;02-3393-8591</div><div style="padding-bottom:2%">郵件&nbsp;/&nbsp;<a href="mailto: info@kehua.org.tw" style="color:#000;text-decoration: none"> info@kehua.org.tw</a></div><div style="padding-bottom:2%">地址&nbsp;/&nbsp;10049&nbsp;台北市中正區忠孝東路1段35號11樓&nbsp;<!--<a href="https://goo.gl/maps/FVSrzK4WDB72" target="new"><img src="images/icon-map-43x58.png" style="width:18px" alt=""/></a>--></div></div>
+</div>
+<!---->
+</div>
+</div>
+
+
+<div style="text-align:center;padding:14px 0 26px;font-size:14px"><a href="/index.html?desktop=1" style="color:#8a6b46;text-decoration:none">電腦版</a></div>
+</body>
+</html>

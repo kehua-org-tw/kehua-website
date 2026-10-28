@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-tw"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+<title>科華文教基金會</title>
+<link rel="stylesheet" type="text/css" href="css/dropmenu.css">
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="jquery.mobile/jquery.mobile.structure-1.4.5.min.css" />
+<script type="text/javascript" src="js/jquery.min_2.1.3.js"></script>
+<!--<script type="text/javascript" src="js/jquery_popup.js"></script>-->
+<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>       
+<script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+  
+body {
+	margin-top: 0px;
+}
+.black0 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 14px;color: #000000;line-height: 20px; }
+.black1 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 16px;color: #000000;line-height: 26px; }
+.black2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #000000;line-height: 32px; }
+.orange1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #eb6306;line-height: 26px; }
+.orange2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #eb6306;line-height: 26px; }
+hr.style-six {
+    border: 0;
+    height: 0;
+	width:1200px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+#css_table {
+      display:table;width:500px;
+  }
+.css_tr {
+      display: table-row;
+  }
+.css_td {
+      display: table-cell;width:160px;
+  }
+.white1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #ffffff;line-height: 26px; }
+.white2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 26px; }
+.white3 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 32px; }
+</style>
+</head>
+
+<body onload="MM_preloadImages('images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png','images/y-02.jpg')">
+
+<!--Whole page-->
+<div data-role="page">
+
+<!--header-->
+<div data-role="header" style="background-color:#ffffff;position:fixed;z-index:10;width:100%;text-shadow:none;height:auto;border:0"><script type="text/javascript">
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {	
+    document.getElementById("myDropdown").classList.toggle("show");
+	 
+}
+	
+$(function() {
+ $('#three').click(function(){
+   /*$("#three").attr('src',"images/icon-close1a-66x66.png");*/
+	$('#three').css('display','none');
+	$('#cross').css('display','block'); 	
+   return false;
+	 
+ });
+});
+	
+$(function() {
+ $('#cross').click(function(){
+   $('#cross').css('display','none');
+   $('#three').css('display','block');
+   return false;
+ });
+});
+		
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}		
+
+</script>
+
+ <div style="text-align:center;margin-left:10%;margin-top:2%;margin-bottom:-0.5%;"><img src="images/a-logo-140x99.png" alt="Logo" style="width:22vmin;max-width:140px" />
+    <div style="float:right;margin-right:5%;margin-top:2%">
+    <img src="images/icon-menu1a-66x66.png" id="three" alt="" style="width:10vmin;max-width:66px;display:block" onclick="myFunction()" class="dropbtn"/>
+    <img src="images/icon-close1a-66x66.png" id="cross" alt="" style="width:10vmin;max-width:66px;display:none" onclick="myFunction()" class="dropbtn"/>
+    <div id="myDropdown" class="dropdown-content">
+    <a href="mindex.html" data-ajax="false" rel="external">關於科華</a>
+    <a href="mnews.html" data-ajax="false" rel="external">最新消息</a>
+    <a href="mactivities.html" data-ajax="false" rel="external">藝文深耕</a>
+    <a href="mmedia.html" data-ajax="false" rel="external">影音回顧</a>
+    <a href="malbum.html" data-ajax="false" rel="external">活動相簿</a>
+	<a href="md_file.html" data-ajax="false" rel="external">公開資訊</a>
+    <a href="msupport.html" data-ajax="false" rel="external">支持與贊助</a>    
+    <!--<a href="#contact" data-ajax="false" rel="external">捐款芳名錄</a>-->
+    </div>
+    </div>
+ </div>	
+</div>
+<!---->
+
+<!--main-->
+<div data-role="main" style="margin:0 auto;padding-top:18%">
+  <div align="left" style="width:100%;background-color:#FFAA73;padding-left:4px" class="white3">2019 Vocal Asia Festival - Day4 Farewell Party</div>
+<div style="width:100%;background-color:#ffc6a0;padding-bottom:20%"><a href="mphoto-40.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/40/0IMG_3149.JPG" style="width:100%;max-width:600px" alt=""/></a></div>
+<div style="width:100%;padding-bottom:40%">
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-42.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/42/0IMG_1955.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day4 豐島演出</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-12</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-40.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/40/0IMG_3149.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day4 Farewell Party</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-12</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-39.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/39/00IMG_1360.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day3</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-11</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-38.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/38/01IMG_0475.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day3 工作坊</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-11</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-37.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/37/00IMG_9838.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day2</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-10</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-36.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/36/00IMG_018375.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day2 工作坊</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-10</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-34.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/34/IMG_007380.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">2019 Vocal Asia Festival - Day1</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-08-09</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-46.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/46/0IMG_6075.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營 -成果發表</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-07-20</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-45.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/45/00IMG_4951.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營 </div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-07-17</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-44.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/44/0IMG_2081.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】阿卡貝拉種子教師研習營-成果發表</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-07-13</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-43.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/43/0.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】2019阿卡貝拉種子教師研習營</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2019-07-10</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-31.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/31/IMG_008113.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】偏鄉音樂推廣(長濱、成功國小)</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-09-04</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-30.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/30/IMG_007029.jpg" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】偏鄉音樂推廣(大坡、福原國小)</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-09-03</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-29.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/29/IMG_0002915.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營 DAY4</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-29</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-28.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/28/IMG_02394.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營 DAY3</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-28</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-27.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/27/IMG_02261.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營 DAY2</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-27</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-26.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/26/IMG_02001.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】爵士樂種子教師研習營  DAY 1</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-26</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-25.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/25/000.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】2018阿卡貝拉種子教師研習營</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-11</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-24.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/24/IMG_01080.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 8</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-07</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-23.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/23/IMG_0243.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 7</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-06</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-22.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/22/IMG_0009637.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 6</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-05</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-21.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/21/IMG_08803.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 5</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-04</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-20.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/20/IMG_08478.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 4</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-03</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-19.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/19/IMG_07983.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 3</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-02</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-18.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/18/IMG_07344.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 2</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-07-01</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-17.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/17/IMG_6790.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】A cappella 環島趴趴GO-Day 1</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2018-06-30</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-16.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/16/00.jpg" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】《NSO媽媽說故事 — 聽見貝多芬》台東安朔國小</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-09-08</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-15.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/15/00.jpg" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】2017阿卡貝拉種子教師研習營</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-07-11</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-14.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/14/IMG_00605.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】《為什麼，我們還在聽古典樂》焦元溥講座</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-06-10</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-13.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/13/IMG_00301.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】《為什麼，我們還在聽古典樂》講座音樂會</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-06-09</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-7.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/7/IMG_09606.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】魏廣晧《爵士樂好好玩》音樂會 台東大學附小</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-05-19</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-6.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/6/IMG_8386.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】魏廣晧《爵士樂怎麼聽 大家一起來即興!》大坡池上音樂館</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-05-10</span></div>
+</div>
+
+	   
+
+<div style="background-color:#CCC;height:100%;">
+<a href="mphoto-9.html" data-ajax="false"><img src="https://photos.kehua.org.tw/album/9/IMG_08482.JPG" style="width:100%;max-width:600px;" alt=""/></a>
+<div style="text-align:left;width:96%;padding-top:10px;word-break: break-all; word-wrap: break-word;padding-left:2%" class="black1">【樂計畫】陳午明《純粹人聲-愛上阿卡貝拉》大坡池上音樂館</div>
+<div style="text-align:left;width:96%;padding-top:10px;padding-left:2%;padding-bottom:5%" class="black1"><span style="color:#666666">2017-04-15</span></div>
+</div>
+
+</div>
+
+<!--footer-->
+<div data-role="footer" style="width:100%;background:#ffffff;height:auto;position:absolute;right:0;bottom:0;box-shadow:none;border:0;padding-top:2%">
+<div align="center" style="width:100%"><a href="https://www.facebook.com/projectm2017" rel="external" data-ajax="false"><img src="images/icon-fb3-72x72.png" style="width:45px" alt=""></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.facebook.com/acappella.love/" rel="external" data-ajax="false"><img src="images/icon-fb4-72x72.png" style="width:45px" alt=""></a></div>
+
+<div align="center" style="width:100%;font-size:13px;letter-spacing:1px;padding-bottom:2%"><div style="padding-bottom:2%">服務專線&nbsp;/&nbsp;02-3393-8591</div><div style="padding-bottom:2%">郵件&nbsp;/&nbsp;<a href="mailto: info@kehua.org.tw" style="color:#000;text-decoration: none"> info@kehua.org.tw</a></div><div style="padding-bottom:2%">地址&nbsp;/&nbsp;10049&nbsp;台北市中正區忠孝東路1段35號11樓&nbsp;<!--<a href="https://goo.gl/maps/FVSrzK4WDB72" target="new"><img src="images/icon-map-43x58.png" style="width:18px" alt=""/></a>--></div></div>
+</div>
+<!---->
+</div>
+<div style="text-align:center;padding:14px 0 26px;font-size:14px"><a href="/index.html?desktop=1" style="color:#8a6b46;text-decoration:none">電腦版</a></div>
+</body>
+</html>

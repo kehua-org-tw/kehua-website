@@ -139,6 +139,23 @@ body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(
 .hidden{display:none!important}
 </style>
 <link rel="stylesheet" href="/css/mobile.css?v=10" media="screen" />
+<script>
+(function(){
+  try{
+    var p=location.pathname.replace(/\/+$/,'')||'/';
+    if(/^\/(m[a-z_]*|mphoto-\d+)\.html$/.test(p)) return;
+    if(sessionStorage.getItem('kehuaDesktop')==='1') return;
+    if(/[?&]desktop=1/.test(location.search)){ sessionStorage.setItem('kehuaDesktop','1'); return; }
+    var mob=/Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+    if(!mob) return;
+    var ids=[6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46];
+    var map={'/':'/mindex.html','/index.html':'/mindex.html','/news.html':'/mnews.html','/activities.html':'/mactivities.html','/media.html':'/mmedia.html','/album.html':'/malbum.html','/support.html':'/msupport.html','/memory.html':'/mmemory.html','/d_file.html':'/md_file.html'};
+    var t=map[p]; var m=p.match(/^\/photo\/(\d+)\.html$/);
+    if(!t && m && ids.indexOf(parseInt(m[1],10))>=0) t='/mphoto-'+m[1]+'.html';
+    if(t) location.replace(t);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
