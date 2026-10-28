@@ -1,0 +1,46 @@
+/* 科華網站：手機版覆寫（僅影響窄螢幕，桌面版維持原樣） */
+@media screen and (max-width: 820px) {
+  html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* 舊版用固定寬度表格排版，這裡讓它撐滿螢幕 */
+  table {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  td, th {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  table[width], td[width] {
+    width: auto !important;
+  }
+  img, iframe, video, embed, object {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  div, p, span, li, h1, h2, h3, h4 {
+    max-width: 100% !important;
+  }
+  /* 內文不要因固定欄寬被擠成一長條 */
+  td[valign="top"] > div[style*="width"] {
+    width: auto !important;
+  }
+  /* 選單：空間不足時允許換行並置中 */
+  td[align="right"] > table td {
+    white-space: normal !important;
+  }
+  .box-c {
+    padding: 3px 2px;
+  }
+  /* 略縮標題，避免斷行太醜 */
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 19px !important; }
+  h3 { font-size: 17px !important; }
+  /* 相簿縮圖維持網格但可縮放 */
+  .galleria-thumbnails .galleria-image {
+    max-width: 100% !important;
+  }
+}
