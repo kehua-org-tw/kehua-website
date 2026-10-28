@@ -177,7 +177,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
             /* This rule is read by Galleria to define the gallery height: */
             #galleria{height:700px;width:1200px}
 </style>
-<link rel="stylesheet" href="/css/mobile.css?v=5" media="screen" />
+<link rel="stylesheet" href="/css/mobile.css?v=6" media="screen" />
 </head>
 
 <body onload="MM_preloadImages('images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png','images/y-02.jpg')">
@@ -413,7 +413,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
         Galleria.loadTheme('/js/galleria.classic.min.js');
 
         // Initialize Galleria
-        Galleria.run('#galleria');
+        if (window.innerWidth > 820) { Galleria.run('#galleria'); }
     });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a50f37a24afc9d09',t:'MTc5MzA3ODA2Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
