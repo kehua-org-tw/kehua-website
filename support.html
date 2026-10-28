@@ -109,17 +109,22 @@ function MM_swapImage() { //v3.0
 <script>
 (function(){
   try{
-    var p=location.pathname.replace(/\/+$/,'')||'/';
-    if(/^\/(m[a-z_]*|mphoto-\d+)\.html$/.test(p)) return;
-    if(sessionStorage.getItem('kehuaDesktop')==='1') return;
-    if(/[?&]desktop=1/.test(location.search)){ sessionStorage.setItem('kehuaDesktop','1'); return; }
-    var mob=/Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
-    if(!mob) return;
-    var ids=[6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46];
-    var map={'/':'/mindex.html','/index.html':'/mindex.html','/news.html':'/mnews.html','/activities.html':'/mactivities.html','/media.html':'/mmedia.html','/album.html':'/malbum.html','/support.html':'/msupport.html','/memory.html':'/mmemory.html','/d_file.html':'/md_file.html'};
-    var t=map[p]; var m=p.match(/^\/photo\/(\d+)\.html$/);
-    if(!t && m && ids.indexOf(parseInt(m[1],10))>=0) t='/mphoto-'+m[1]+'.html';
-    if(t) location.replace(t);
+    var p = location.pathname;
+    if (p.length > 1 && p.charAt(p.length-1) === '/') p = p.slice(0, -1);
+    if (!p) p = '/';
+    var mobiles = ['/mindex.html','/mnews.html','/mactivities.html','/malbum.html','/mmedia.html','/mmemory.html','/msupport.html','/md_file.html','/mdonation.html'];
+    if (mobiles.indexOf(p) >= 0 || p.indexOf('/mphoto-') === 0) return;
+    if (sessionStorage.getItem('kehuaDesktop') === '1') return;
+    if (location.search.indexOf('desktop=1') >= 0) { sessionStorage.setItem('kehuaDesktop','1'); return; }
+    var mob = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+    if (!mob) return;
+    var map = {'/':'/mindex.html','/index.html':'/mindex.html','/news.html':'/mnews.html','/activities.html':'/mactivities.html','/media.html':'/mmedia.html','/album.html':'/malbum.html','/support.html':'/msupport.html','/memory.html':'/mmemory.html','/d_file.html':'/md_file.html'};
+    var t = map[p];
+    if (!t && p.indexOf('/photo/') === 0) {
+      var id = p.slice(7).replace('.html','');
+      if (/^[0-9]+$/.test(id) && [6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46].indexOf(parseInt(id,10)) >= 0) t = '/mphoto-' + id + '.html';
+    }
+    if (t) location.replace(t);
   }catch(e){}
 })();
 </script>
