@@ -15,7 +15,7 @@
     width: auto !important;
     max-width: 100% !important;
   }
-  [style*="width"] {
+  [style*="width"], .content, .cred {
     width: auto !important;
     max-width: 100% !important;
   }
@@ -23,14 +23,17 @@
     max-width: 100% !important;
     height: auto !important;
   }
-  /* 標頭：LOGO 與選單改成上下堆疊（首頁 td=1000、相簿頁 td=979） */
+  /* 標頭：LOGO 與選單上下堆疊 */
   td[width="19%"], td[width="979"], td[width="1000"], td[align="right"] {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
   }
+  td[width="19%"] a,
   td[width="19%"] img {
-    margin: 0 auto;
+    display: block !important;
+    margin: 0 auto !important;
+    text-align: center !important;
   }
   td[width="979"] > table,
   td[width="1000"] > table,
@@ -50,17 +53,18 @@
   td[align="right"] a {
     white-space: nowrap !important;
   }
-  /* 相簿頁：Galleria 在手機不啟用，改成縮圖網格 */
+  /* 相簿頁：不啟用 Galleria，改成縮圖網格 */
   #galleria {
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     margin: 0 auto !important;
   }
   #galleria > a {
     display: inline-block !important;
-    width: 31.5% !important;
-    margin: 0.4% !important;
+    width: 23.5% !important;
+    margin: 0.5% !important;
     vertical-align: top !important;
     box-sizing: border-box;
   }
@@ -69,7 +73,6 @@
     height: auto !important;
     display: block;
   }
-  /* 字級 */
   body, td, th, div, p, span, li, font {
     font-size: 15px !important;
     line-height: 1.75 !important;
