@@ -6,7 +6,7 @@
     overflow-x: hidden !important;
     -webkit-text-size-adjust: 100%;
   }
-  /* 舊版用固定寬度表格與 inline width 排版，全部改成流動 */
+  /* 固定寬度表格改成流動 */
   table {
     width: 100% !important;
     max-width: 100% !important;
@@ -24,18 +24,40 @@
     max-width: 100% !important;
     height: auto !important;
   }
-  /* 字級：舊版 inline font-size 太大，統一縮到可讀範圍 */
-  body, td, th, div, p, span, li, a, font {
+  /* 標頭：LOGO 與選單改成上下堆疊 */
+  td[width="19%"], td[width="1000"], td[align="right"] {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  td[width="19%"] img {
+    margin: 0 auto;
+  }
+  /* 選單項目改成會自動換行的行內元素 */
+  td[width="1000"] > table,
+  td[align="right"] > table {
+    width: 100% !important;
+  }
+  td[width="1000"] > table > tbody > tr > td,
+  td[align="right"] > table > tbody > tr > td {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 4px 8px !important;
+    vertical-align: middle !important;
+  }
+  td[width="1000"] a,
+  td[align="right"] a {
+    white-space: nowrap !important;
+  }
+  /* 字級 */
+  body, td, th, div, p, span, li, font {
     font-size: 15px !important;
     line-height: 1.75 !important;
   }
   h1, .title { font-size: 20px !important; line-height: 1.4 !important; }
   h2 { font-size: 18px !important; line-height: 1.4 !important; }
   h3 { font-size: 16px !important; line-height: 1.4 !important; }
-  [style*="font-size"] {
-    font-size: 15px !important;
-  }
-  /* 首頁那顆大按鈕 */
+  [style*="font-size"] { font-size: 15px !important; }
   .metal-button {
     font-size: 16px !important;
     padding: 12px 18px !important;
@@ -43,7 +65,6 @@
     max-width: 100% !important;
     letter-spacing: 0 !important;
   }
-  /* 避免長字串撐破版面 */
   * {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
