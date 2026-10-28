@@ -43,20 +43,33 @@
   td[width="979"] > table,
   td[width="1000"] > table,
   td[align="right"] > table {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
     width: 100% !important;
+  }
+  td[width="979"] > table > tbody,
+  td[width="1000"] > table > tbody,
+  td[align="right"] > table > tbody,
+  td[width="979"] > table > tbody > tr,
+  td[width="1000"] > table > tbody > tr,
+  td[align="right"] > table > tbody > tr {
+    display: contents !important;
   }
   td[width="979"] > table > tbody > tr > td,
   td[width="1000"] > table > tbody > tr > td,
   td[align="right"] > table > tbody > tr > td {
-    display: inline-block !important;
+    display: block !important;
     width: auto !important;
-    padding: 4px 8px !important;
+    max-width: 100% !important;
+    padding: 4px 6px !important;
     vertical-align: middle !important;
   }
   td[width="979"] a,
   td[width="1000"] a,
   td[align="right"] a {
-    white-space: nowrap !important;
+    white-space: normal !important;
+    font-size: 14px !important;
   }
   /* 相簿頁：不啟用 Galleria，改成縮圖網格 */
   #galleria {
