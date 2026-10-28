@@ -15,8 +15,13 @@
     width: auto !important;
     max-width: 100% !important;
   }
-  [style*="width"], .content, .cred {
+  [style*="width"] {
     width: auto !important;
+    max-width: 100% !important;
+  }
+  /* 內層內容容器（舊版固定 620px）改為滿版 */
+  .content, .cred {
+    width: 100% !important;
     max-width: 100% !important;
   }
   img, iframe, video, embed, object {
