@@ -184,7 +184,7 @@ height:auto;
 	margin-top:-0.5%;
 	width: 100%;
 	height: 1420px;
-	background: url(/assets/back2-1920x1420.jpg') no-repeat;
+	background: url(/images/back2-1920x1420.jpg'?v=2) no-repeat;
 	background-position: center;
 	background-size: cover;
 	/*font-size:150%;*/
