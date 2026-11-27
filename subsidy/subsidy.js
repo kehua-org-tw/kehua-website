@@ -241,7 +241,7 @@
     $(".sub-mob-menu-btn").on("click", function () {
       var open = $("#sub-mob-menu").toggleClass("open").hasClass("open");
       $(this).attr("aria-expanded", open ? "true" : "false");
-      $(this).find("img").attr("src", open ? "/images/icon-close1a-66x66.png?v=2" : "/images/icon-menu1a-66x66.png?v=2");
+      $(this).find("img").attr("src", open ? "images/icon-close1a-66x66.png?v=2" : "images/icon-menu1a-66x66.png?v=2");
     });
   }
 

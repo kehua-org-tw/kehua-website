@@ -6,13 +6,13 @@ media:
   - name: files
     label: 補助專區檔案
     input: subsidy/files
-    output: /subsidy/files
+    output: subsidy/files
     rename: false
     extensions: [pdf, doc, docx, odt, xls, xlsx, ods, ppt, pptx, odp, zip, jpg, jpeg, png, webp]
   - name: images
     label: 補助專區圖片
     input: subsidy/img
-    output: /subsidy/img
+    output: subsidy/img
     rename: false
     extensions: [jpg, jpeg, png, webp]
 
