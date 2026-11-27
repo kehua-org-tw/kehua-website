@@ -22,6 +22,10 @@ body.sub-page { margin: 0; background: var(--white); }
 }
 .sub *, .sub *::before, .sub *::after { box-sizing: border-box; }
 .sub a { color: inherit; }
+/* 中文段落左右對齊，並讓瀏覽器平衡換行，避免最後一行只剩一個字 */
+.sub p, .sub-point p, .sub-news-body, .sub-step-note, .sub-check-text span {
+  text-align: justify; text-justify: inter-character; text-wrap: pretty; line-break: strict;
+}
 .sub :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; border-radius: 2px; }
 .sub-sr-only {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -106,7 +110,8 @@ body.sub-page { margin: 0; background: var(--white); }
 .sub-news-links a { display: block; color: var(--navy); font-weight: 700; padding: 2px 0; }
 
 /* 計畫介紹 */
-.sub-story p { margin: 0 0 1.2em; max-width: 36em; font-size: 18px; line-height: 2; }
+.sub-story { max-width: 760px; }
+.sub-story p { margin: 0 0 1.2em; font-size: 18px; line-height: 2; }
 .sub-story p:first-child { font-size: 21px; line-height: 1.9; font-weight: 700; color: var(--navy); }
 .sub-story p:last-child { margin-bottom: 0; }
 
@@ -135,24 +140,13 @@ body.sub-page { margin: 0; background: var(--white); }
 
 /* 準備資料 */
 .sub-check { background: var(--cream); border-radius: 20px; padding: 40px 48px; }
-.sub-check-hint { margin: 0 0 22px; font-size: 15px; color: var(--muted); }
 .sub-check-list { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 48px; }
-.sub-check-item { break-inside: avoid; margin-bottom: 18px; }
-.sub-check-btn {
-  display: flex; gap: 14px; align-items: flex-start; width: 100%;
-  background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font: inherit; color: inherit;
+.sub-check-item { display: flex; gap: 14px; align-items: flex-start; break-inside: avoid; margin-bottom: 20px; }
+.sub-check-item::before {
+  content: ""; flex: 0 0 12px; height: 12px; margin-top: 9px; border-radius: 50%; background: var(--coral);
 }
-.sub-check-box {
-  flex: 0 0 22px; height: 22px; margin-top: 3px; border-radius: 6px;
-  border: 2px solid var(--brown); background: var(--white); position: relative;
-}
-.sub-check-btn[aria-checked="true"] .sub-check-box { background: var(--coral); border-color: var(--coral); }
-.sub-check-btn[aria-checked="true"] .sub-check-box::after {
-  content: ""; position: absolute; left: 6px; top: 1px; width: 6px; height: 12px;
-  border: solid var(--brown); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg);
-}
+.sub-check-text { flex: 1; min-width: 0; }
 .sub-check-text strong { display: block; font-size: 17px; line-height: 1.6; font-weight: 700; }
-.sub-check-btn[aria-checked="true"] .sub-check-text strong { text-decoration: line-through; text-decoration-color: var(--coral); text-decoration-thickness: 2px; }
 .sub-check-text span { display: block; font-size: 15px; line-height: 1.75; color: var(--muted); }
 .sub-check-note { margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.8; color: var(--muted); }
 

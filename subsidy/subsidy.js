@@ -4,7 +4,6 @@
  */
 (function ($) {
   var CATEGORY_ORDER = ["辦法", "簡章", "申請表格", "其他"];
-  var CHECK_KEY = "kehua-subsidy-checklist";
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -31,13 +30,6 @@
     $el.html('<p class="sub-pending">內容讀取失敗，請重新整理頁面。</p>');
   }
 
-  function readChecked() {
-    try { return JSON.parse(localStorage.getItem(CHECK_KEY)) || {}; } catch (e) { return {}; }
-  }
-
-  function saveChecked(state) {
-    try { localStorage.setItem(CHECK_KEY, JSON.stringify(state)); } catch (e) { /* 無法儲存時只影響勾選紀錄 */ }
-  }
 
   function renderNews(data) {
     var list = (data.items || []).slice().sort(function (a, b) {
@@ -129,24 +121,12 @@
   function renderChecklist(data) {
     var items = data.checklist || [];
     if (!items.length) { $("#sub-checklist").hide(); return; }
-    var state = readChecked();
     var $list = $("#sub-checklist-list");
     $.each(items, function (i, c) {
-      var key = String(c.item || i);
       $list.append(
-        '<li class="sub-check-item"><button type="button" class="sub-check-btn" role="checkbox" aria-checked="' +
-        (state[key] ? "true" : "false") + '" data-key="' + esc(key) + '">' +
-        '<span class="sub-check-box" aria-hidden="true"></span>' +
-        '<span class="sub-check-text"><strong>' + esc(c.item) + "</strong>" +
-        (c.note ? "<span>" + esc(c.note) + "</span>" : "") + "</span></button></li>"
+        '<li class="sub-check-item"><div class="sub-check-text"><strong>' + esc(c.item) + "</strong>" +
+        (c.note ? "<span>" + esc(c.note) + "</span>" : "") + "</div></li>"
       );
-    });
-    $list.on("click", ".sub-check-btn", function () {
-      var on = $(this).attr("aria-checked") !== "true";
-      $(this).attr("aria-checked", on ? "true" : "false");
-      var s = readChecked();
-      if (on) s[$(this).data("key")] = true; else delete s[$(this).data("key")];
-      saveChecked(s);
     });
     $("#sub-checklist-note").text(data.checklistNote || "").toggle(!!data.checklistNote);
   }
