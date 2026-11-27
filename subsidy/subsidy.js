@@ -90,9 +90,13 @@
         (a.dates ? "申請期間 " + esc(a.dates) : "")
       );
     }
+    // 主視覺圖片已含計畫名稱；後台清空圖片時，改顯示文字版標題
     if (data.heroImage) {
-      $("#sub-hero").addClass("has-image");
-      $("#sub-hero-media").css("background-image", 'url("' + String(data.heroImage).replace(/"/g, "") + '")');
+      $("#sub-hero-img").attr("src", data.heroImage);
+      $("#sub-hero-mobile-src").attr("srcset", data.heroImageMobile || data.heroImage);
+    } else if (data.heroImage === "") {
+      $("#sub-hero-visual").remove();
+      $("#sub-hero-text").removeClass("sub-sr-only");
     }
   }
 

@@ -1,5 +1,6 @@
 # Pages CMS 後台設定（https://pagescms.org）
-# 定義補助專區後台的表單。內容存在 subsidy/data/*.json，上傳的檔案存在 subsidy/files/。
+# 定義補助專區後台的表單。內容存在 subsidy/data/*.json，
+# 下載用的檔案存在 subsidy/files/，主視覺圖片存在 subsidy/img/。
 
 media:
   - name: files
@@ -8,6 +9,12 @@ media:
     output: /subsidy/files
     rename: false
     extensions: [pdf, doc, docx, odt, xls, xlsx, ods, ppt, pptx, odp, zip, jpg, jpeg, png, webp]
+  - name: images
+    label: 補助專區圖片
+    input: subsidy/img
+    output: /subsidy/img
+    rename: false
+    extensions: [jpg, jpeg, png, webp]
 
 content:
   - name: subsidy-news
@@ -68,11 +75,17 @@ content:
         description: 顯示在主視覺的計畫名稱下方，建議一句話。
         type: string
       - name: heroImage
-        label: 主視覺圖片
-        description: 建議寬 2400 像素以上的橫式圖片。留空時顯示深紫底色和彩色線條。
+        label: 主視覺圖片（電腦版）
+        description: 橫式圖片，建議 3840×800 像素。圖片裡要有計畫名稱。留空時改顯示文字版標題。
         type: image
         options:
-          media: files
+          media: images
+      - name: heroImageMobile
+        label: 主視覺圖片（手機版）
+        description: 方形圖片，建議 1440×1440 像素。留空時手機也用電腦版圖片。
+        type: image
+        options:
+          media: images
       - name: intro
         label: 計畫介紹
         description: 說明計畫的由來與意義。空一行可以分段，第一段會用較大的字顯示。
