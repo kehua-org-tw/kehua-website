@@ -22,9 +22,9 @@ body.sub-page { margin: 0; background: var(--white); }
 }
 .sub *, .sub *::before, .sub *::after { box-sizing: border-box; }
 .sub a { color: inherit; }
-/* 中文段落左右對齊，並讓瀏覽器平衡換行，避免最後一行只剩一個字 */
+/* 中文段落左右對齊。不用 text-wrap: pretty：Safari 會先把行縮短再撐滿，字距會被拉開 */
 .sub p, .sub-point p, .sub-news-body, .sub-step-note, .sub-check-text span {
-  text-align: justify; text-justify: inter-character; text-wrap: pretty; line-break: strict;
+  text-align: justify; line-break: strict;
 }
 .sub :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; border-radius: 2px; }
 .sub-sr-only {
