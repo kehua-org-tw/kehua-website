@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>頁面重新導向 | 科華文教基金會</title>
+<script>
+(function () {
+  var p = location.pathname;
+  var q = location.search || "";
+  var h = location.hash || "";
+
+  // 舊網址：/photo.php?id=NN -> /photo/NN.html
+  if (/\/photo\.php\/?$/.test(p)) {
+    var m = q.match(/[?&]id=(\d+)/);
+    if (m) { location.replace("/photo/" + m[1] + ".html"); return; }
+    location.replace("/album.html"); return;
+  }
+
+  // 舊網址：*.php -> *.html（保留 query 與 hash）
+  if (/\.php$/i.test(p)) {
+    location.replace(p.replace(/\.php$/i, ".html") + q + h);
+    return;
+  }
+
+  // 其他：顯示導覽
+  document.addEventListener("DOMContentLoaded", function () {
+    var box = document.getElementById("fallback");
+    if (box) { box.style.display = "block"; }
+  });
+})();
+</script>
+<style>
+  body { margin:0; font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; color:#333; background:#faf9f6; }
+  .wrap { max-width: 720px; margin: 12vh auto; padding: 0 24px; }
+  h1 { font-size: 22px; margin-bottom: 12px; }
+  p { line-height: 1.8; color:#555; }
+  ul { line-height: 2; }
+  a { color:#9a6b3f; }
+  .muted { color:#999; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>正在為你重新導向…</h1>
+  <p>此頁面已更新網址，若沒有自動跳轉，請由下方選單前往。</p>
+  <div id="fallback" style="display:none">
+    <ul>
+      <li><a href="/index.html">關於科華</a></li>
+      <li><a href="/news.html">最新消息</a></li>
+      <li><a href="/activities.html">藝文深耕</a></li>
+      <li><a href="/media.html">媒體報導</a></li>
+      <li><a href="/album.html">活動相簿</a></li>
+      <li><a href="/support.html">贊助科華</a></li>
+      <li><a href="/memory.html">懷念陳醫師</a></li>
+    </ul>
+  </div>
+  <p class="muted">科華文教基金會 kehua.org.tw</p>
+</div>
+</body>
+</html>

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="zh-tw"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />	
+   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=2" />	
    <link rel="stylesheet" href="js/flexslider.css" type="text/css" media="screen" />
 <title>科華文教基金會</title>
 <style type="text/css">
@@ -211,6 +211,28 @@ margin-top: 0%;
         }
 -->
 </style>
+<script>
+(function(){
+  try{
+    var p = location.pathname;
+    if (p.length > 1 && p.charAt(p.length-1) === '/') p = p.slice(0, -1);
+    if (!p) p = '/';
+    var mobiles = ['/mindex.html','/mnews.html','/mactivities.html','/malbum.html','/mmedia.html','/mmemory.html','/msupport.html','/md_file.html','/mdonation.html'];
+    if (mobiles.indexOf(p) >= 0 || p.indexOf('/mphoto-') === 0) return;
+    if (sessionStorage.getItem('kehuaDesktop') === '1') return;
+    if (location.search.indexOf('desktop=1') >= 0) { sessionStorage.setItem('kehuaDesktop','1'); return; }
+    var mob = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+    if (!mob) return;
+    var map = {'/':'/mindex.html','/index.html':'/mindex.html','/news.html':'/mnews.html','/activities.html':'/mactivities.html','/media.html':'/mmedia.html','/album.html':'/malbum.html','/support.html':'/msupport.html','/memory.html':'/mmemory.html','/d_file.html':'/md_file.html'};
+    var t = map[p];
+    if (!t && p.indexOf('/photo/') === 0) {
+      var id = p.slice(7).replace('.html','');
+      if (/^[0-9]+$/.test(id) && [6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46].indexOf(parseInt(id,10)) >= 0) t = '/mphoto-' + id + '.html';
+    }
+    if (t) location.replace(t);
+  }catch(e){}
+})();
+</script>
 </head>
 
 <body onload="MM_preloadImages('images/bt-1b.png','images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png')">
@@ -219,7 +241,7 @@ margin-top: 0%;
     <td><div align="center">
       <table width="1200" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="19%" align="left"><a href="index.html"><img src="images/a-logo2.png" width="90" height="64" /></a>
+          <td width="19%" align="left"><a href="index.html"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></a>
             <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
                 <td height="8"></td>
@@ -249,43 +271,43 @@ margin-top: 0%;
         <div class="flexslider">
           <ul class="slides">
                 <li>
-  	    	    <img src="img/1.jpg"  width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/1.jpg"  width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/2.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/2.jpg" width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/3.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/3.jpg" width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/4.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/4.jpg" width="1200"/>
   	    		</li>
                 <li>
-  	    	    <img src="img/5.jpg" width="1200" />
+  	    	    <img src="https://photos.kehua.org.tw/img/5.jpg" width="1200" />
   	    		</li>
                 <li>
-  	    	    <img src="img/6.jpg"  width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/6.jpg"  width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/7.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/7.jpg" width="1200"/>
   	    		</li>
   	    		<!--<li>
-  	    	    <img src="img/8.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/8.jpg" width="1200"/>
   	    		</li>-->
   	    		<li>
-  	    	    <img src="img/9.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/9.jpg" width="1200"/>
   	    		</li>
                 <li>
-  	    	    <img src="img/10.jpg" width="1200" />
+  	    	    <img src="https://photos.kehua.org.tw/img/10.jpg" width="1200" />
   	    		</li>
                 <li>
-  	    	    <img src="img/11.jpg"  width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/11.jpg"  width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/12.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/12.jpg" width="1200"/>
   	    		</li>
   	    		<li>
-  	    	    <img src="img/13.jpg" width="1200"/>
+  	    	    <img src="https://photos.kehua.org.tw/img/13.jpg" width="1200"/>
   	    		</li>  	    		
           </ul>
         </div>
@@ -321,13 +343,13 @@ margin-top: 0%;
                       </tr>
                     <tr>
  <td align="center">
-<img src="about/bd-001.jpg" width="1200" alt=""/>
+<img src="https://photos.kehua.org.tw/about/bd-001.jpg" width="1200" alt=""/>
 <div style="width:1000px" align="center">
 <br/>
 <!--董事資料開始-->	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/冰冰3cut.jpg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/冰冰3cut.jpg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -335,7 +357,7 @@ margin-top: 0%;
       <td class="orange3">劉沁如</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">CJCHT 曦爵集團 董事長</td>
@@ -353,7 +375,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/嚴總裁(橫式) cut.jpg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/嚴總裁(橫式) cut.jpg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -361,7 +383,7 @@ margin-top: 0%;
       <td class="orange3">嚴長壽</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">公益平台文化基金會 董事長</td>
@@ -379,7 +401,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/李董1 copy.jpg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/李董1 copy.jpg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -387,7 +409,7 @@ margin-top: 0%;
       <td class="orange3">李靜芳</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">遠東集團綜效暨零售規劃總部執行長</td>
@@ -405,7 +427,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/趙董照片new.jpg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/趙董照片new.jpg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -413,7 +435,7 @@ margin-top: 0%;
       <td class="orange3">趙克中</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">長豐智能科技公司 董事長</td>
@@ -431,7 +453,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/邱瑗_ 橫式照片cut.png" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/邱瑗_ 橫式照片cut.png" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -439,7 +461,7 @@ margin-top: 0%;
       <td class="orange3">邱瑗</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">國家兩廳院 藝術總監</td>
@@ -457,7 +479,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/Sharon照片 resize.jpeg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/Sharon照片 resize.jpeg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -465,7 +487,7 @@ margin-top: 0%;
       <td class="orange3">劉嘉慧</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">曦爵股份有限公司 台北總管理部負責人</td>
@@ -483,7 +505,7 @@ margin-top: 0%;
 	
 <div style="width:500px;float:left">
 <br/>
-<div style="float:left" class="img-demo"><img src="direct/侯浩安_照片 resize.jpeg" width="220" alt=""/></div>
+<div style="float:left" class="img-demo"><img src="https://photos.kehua.org.tw/direct/侯浩安_照片 resize.jpeg" width="220" alt=""/></div>
 <div style="float:left">
 <table width="270" border="0" cellpadding="7" cellspacing="7">
   <tbody>
@@ -491,7 +513,7 @@ margin-top: 0%;
       <td class="orange3">侯浩安</td>
     </tr>
     <tr>
-      <td align="left"><img src="about/bd-003.jpg" width="230" alt=""/></td>
+      <td align="left"><img src="https://photos.kehua.org.tw/about/bd-003.jpg" width="230" alt=""/></td>
     </tr>
     <tr>
       <td class="black0" align="left">香港理工大學 教授</td>
@@ -514,11 +536,11 @@ margin-top: 0%;
 	 
 <!--<table width="1000" border="0" cellspacing="4" cellpadding="4">
   <tr>
-    <td><img src="images/an-1.png" width="190"  alt=""/></td>
-    <td><img src="images/an-2.png" width="190"  alt=""/></td>
-    <td><img src="images/an-3.png" width="190"  alt=""/></td>
-    <td><img src="images/an-4.png" width="190"  alt=""/></td>
-    <td><img src="images/an-5.png" width="190"  alt=""/></td>
+    <td><img src="/images/an-1.png?v=2" width="190"  alt=""/></td>
+    <td><img src="/images/an-2.png?v=2" width="190"  alt=""/></td>
+    <td><img src="/images/an-3.png?v=2" width="190"  alt=""/></td>
+    <td><img src="/images/an-4.png?v=2" width="190"  alt=""/></td>
+    <td><img src="/images/an-5.png?v=2" width="190"  alt=""/></td>
   </tr>
 </table>-->
                                               </td>
@@ -533,7 +555,7 @@ margin-top: 0%;
                         <table width="1200" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td align="center">						
-							<img src="images/me_001.jpg" width="1200" alt=""/>						 
+							<img src="/images/me_001.jpg?v=2" width="1200" alt=""/>						 
 						<!--	<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
                           <td height="50"></td>
@@ -541,10 +563,10 @@ margin-top: 0%;
                       </table>	-->
 					<div style="width:65%;margin:0 auto;padding:3%">
 						<div class="photo-container">
-							<a href="memory.html"><img src="memory/mem001.jpg" alt=""  class="photo"/></a>
+							<a href="memory.html"><img src="https://photos.kehua.org.tw/memory/mem001.jpg" alt=""  class="photo"/></a>
 						</div>
 	
-			<!-- <a href="memory.html"> --><button class="metal-button" onClick="window.location.href='memory.php';" style="margin-top:5%">基金會創辦人 陳鳳文女士 紀念專頁</button><!--</a>-->
+			<!-- <a href="memory.html"> --><button class="metal-button" onClick="window.location.href='/memory.html';" style="margin-top:5%">基金會創辦人 陳鳳文女士 紀念專頁</button><!--</a>-->
 			
 				</div>
 <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -565,7 +587,7 @@ margin-top: 0%;
       </table>
       <table width="1200" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td><img src="images/a-002a.jpg" width="1200"  alt=""/></td>
+          <td><img src="/images/a-002a.jpg?v=2" width="1200"  alt=""/></td>
         </tr>
       </table>
       <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -577,7 +599,7 @@ margin-top: 0%;
         <tr>
           <td width="1048" align="right" valign="bottom"><table width="85%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="center"><img src="images/a-logo2.png" width="90" height="64" /></td>
+              <td align="center"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></td>
             </tr>
             <tr>
               <td align="center"><table width="95%" border="0" cellpadding="0" cellspacing="0">
@@ -585,7 +607,7 @@ margin-top: 0%;
                   <td width="979" align="right" valign="bottom" class="black1"><span class="orange1">服務專線</span> 02-3393-8591　|　<span class="orange1">郵件</span><a href="/cdn-cgi/l/email-protection#5c7c35323a331c373934293d72332e3b72282b" style="color:#000;text-decoration: none"> <span class="__cf_email__" data-cfemail="d0b9beb6bf90bbb5b8a5b1febfa2b7fea4a7">[email&#160;protected]</span></a>　|　<span class="orange1">地址</span> 10049 台北市中正區忠孝東路1段35號11樓</td>
                   <td width="30" valign="bottom" class="black1"><table width="30" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td><a href="https://goo.gl/maps/J6YyNq7VXWo" target="new"><img src="images/icon-map-30x40.png" width="30" height="40" border="0" /></a></td>
+                        <td><a href="https://goo.gl/maps/J6YyNq7VXWo" target="new"><img src="/images/icon-map-30x40.png?v=2" width="30" height="40" border="0" /></a></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -594,8 +616,8 @@ margin-top: 0%;
           </table></td>
           <td width="152" align="right" valign="bottom"><table width="150" border="0" cellspacing="0" cellpadding="3">
             <tr>
-              <td align="right"><a href="https://www.facebook.com/projectm2017" target="new"><img src="images/icon-fb3-72x72.png" alt="樂計畫 粉絲專頁" title="樂計畫 粉絲專頁" width="72" height="72" border="0" /></a></td>
-              <td align="right"><a href="https://www.facebook.com/acappella.love/" target="new"><img src="images/icon-fb4-72x72.png" alt="愛上阿卡貝拉 粉絲專頁" title="愛上阿卡貝拉 粉絲專頁" width="72" height="72" border="0" /></a></td>
+              <td align="right"><a href="https://www.facebook.com/projectm2017" target="new"><img src="/images/icon-fb3-72x72.png?v=2" alt="樂計畫 粉絲專頁" title="樂計畫 粉絲專頁" width="72" height="72" border="0" /></a></td>
+              <td align="right"><a href="https://www.facebook.com/acappella.love/" target="new"><img src="/images/icon-fb4-72x72.png?v=2" alt="愛上阿卡貝拉 粉絲專頁" title="愛上阿卡貝拉 粉絲專頁" width="72" height="72" border="0" /></a></td>
             </tr>
           </table></td>
         </tr>

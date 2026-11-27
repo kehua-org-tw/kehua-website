@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="zh-tw"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+	 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=2" />
 <title>科華文教基金會</title>
 <!-- load jQuery -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script> -->
@@ -177,6 +177,28 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
             /* This rule is read by Galleria to define the gallery height: */
             #galleria{height:700px;width:1200px}
 </style>
+<script>
+(function(){
+  try{
+    var p = location.pathname;
+    if (p.length > 1 && p.charAt(p.length-1) === '/') p = p.slice(0, -1);
+    if (!p) p = '/';
+    var mobiles = ['/mindex.html','/mnews.html','/mactivities.html','/malbum.html','/mmedia.html','/mmemory.html','/msupport.html','/md_file.html','/mdonation.html'];
+    if (mobiles.indexOf(p) >= 0 || p.indexOf('/mphoto-') === 0) return;
+    if (sessionStorage.getItem('kehuaDesktop') === '1') return;
+    if (location.search.indexOf('desktop=1') >= 0) { sessionStorage.setItem('kehuaDesktop','1'); return; }
+    var mob = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+    if (!mob) return;
+    var map = {'/':'/mindex.html','/index.html':'/mindex.html','/news.html':'/mnews.html','/activities.html':'/mactivities.html','/media.html':'/mmedia.html','/album.html':'/malbum.html','/support.html':'/msupport.html','/memory.html':'/mmemory.html','/d_file.html':'/md_file.html'};
+    var t = map[p];
+    if (!t && p.indexOf('/photo/') === 0) {
+      var id = p.slice(7).replace('.html','');
+      if (/^[0-9]+$/.test(id) && [6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46].indexOf(parseInt(id,10)) >= 0) t = '/mphoto-' + id + '.html';
+    }
+    if (t) location.replace(t);
+  }catch(e){}
+})();
+</script>
 </head>
 
 <body onload="MM_preloadImages('images/icon-fb1b-50x50.png','images/icon-fb2b-50x50.png','images/y-02.jpg')">
@@ -185,7 +207,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
     <td><div align="center">
       <table width="1200" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="19%" align="left"><a href="/index.html"><img src="/images/a-logo2.png" width="90" height="64" /></a>
+          <td width="19%" align="left"><a href="/index.html"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></a>
             <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
                 <td height="8"></td>
@@ -216,83 +238,83 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
               <td width="550" align="center" class="white3" bgcolor="#000000"><div style="width:500px;float:left">
    <div class="content">
   <div id="galleria">
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1283.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/0IMG_1283.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1283.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_0769.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_0769.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_0769.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1221.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/0IMG_1221.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1221.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/00IMG_1360.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/00IMG_1360.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/00IMG_1360.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1399.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/0IMG_1399.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1399.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1712.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/0IMG_1712.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/0IMG_1712.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_0775.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_0775.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_0775.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1090.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1090.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1090.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1101.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1101.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1101.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1080.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1080.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1080.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1092.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1092.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1092.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1086.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1086.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1086.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1104.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1104.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1104.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1122.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1122.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1122.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1120.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1120.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1120.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1126.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1126.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1126.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1124.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1124.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1124.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1140.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1140.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1140.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1133.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1133.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1133.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1154.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1154.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1154.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1145.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1145.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1145.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1148.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1148.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1148.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1178.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1178.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1178.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1190.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1190.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1190.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1160.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1160.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1160.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1192.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1192.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1192.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1204.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1204.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1204.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1186.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1186.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1186.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1226.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1226.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1226.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1252.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1252.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1252.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1290.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1290.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1290.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1248.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1248.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1248.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1245.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1245.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1245.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1272.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1272.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1272.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1293.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1293.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1293.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1255.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1255.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1255.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1297.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1297.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1297.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1375.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1375.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1375.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1364.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1364.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1364.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1343.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1343.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1343.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1361.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1361.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1361.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1421.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1421.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1421.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1557.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1557.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1557.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1433.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1433.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1433.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1429.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1429.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1429.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1547.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1547.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1547.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1586.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1586.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1586.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1621.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1621.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1621.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1603.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1603.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1603.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1604.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1604.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1604.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1350.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1350.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1350.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1541.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1541.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1541.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1627.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1627.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1627.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1638.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1638.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1638.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1639.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1639.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1639.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1641.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1641.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1641.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1654.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1654.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1654.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1648.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1648.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1648.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1655.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1655.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1655.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1656.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1656.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1656.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1646.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1646.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1646.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1658.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1658.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1658.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1660.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1660.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1660.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1661.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1661.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1661.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1718.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1718.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1718.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1722.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1722.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1722.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1726.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1726.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1726.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1727.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1727.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1727.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1723.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1723.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1723.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1730.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1730.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1730.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1647.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1647.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1647.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1734.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1734.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1734.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1735.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1735.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1735.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1746.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1746.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1746.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1739.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1739.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1739.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1747.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1747.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1747.JPG" data-title="" data-description=""></a>
-<a href="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1731.JPG"><img src="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/thumbnail/IMG_1731.JPG" data-big="https://pub-4d4cbf23ccc84f97affc5364709bdfed.r2.dev/album/39/IMG_1731.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/0IMG_1283.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/0IMG_1283.JPG" data-big="https://photos.kehua.org.tw/album/39/0IMG_1283.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_0769.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_0769.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_0769.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/0IMG_1221.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/0IMG_1221.JPG" data-big="https://photos.kehua.org.tw/album/39/0IMG_1221.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/00IMG_1360.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/00IMG_1360.JPG" data-big="https://photos.kehua.org.tw/album/39/00IMG_1360.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/0IMG_1399.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/0IMG_1399.JPG" data-big="https://photos.kehua.org.tw/album/39/0IMG_1399.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/0IMG_1712.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/0IMG_1712.JPG" data-big="https://photos.kehua.org.tw/album/39/0IMG_1712.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_0775.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_0775.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_0775.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1090.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1090.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1090.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1101.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1101.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1101.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1080.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1080.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1080.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1092.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1092.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1092.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1086.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1086.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1086.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1104.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1104.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1104.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1122.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1122.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1122.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1120.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1120.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1120.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1126.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1126.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1126.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1124.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1124.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1124.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1140.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1140.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1140.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1133.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1133.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1133.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1154.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1154.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1154.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1145.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1145.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1145.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1148.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1148.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1148.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1178.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1178.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1178.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1190.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1190.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1190.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1160.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1160.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1160.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1192.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1192.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1192.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1204.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1204.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1204.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1186.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1186.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1186.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1226.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1226.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1226.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1252.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1252.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1252.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1290.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1290.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1290.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1248.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1248.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1248.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1245.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1245.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1245.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1272.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1272.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1272.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1293.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1293.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1293.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1255.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1255.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1255.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1297.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1297.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1297.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1375.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1375.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1375.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1364.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1364.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1364.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1343.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1343.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1343.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1361.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1361.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1361.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1421.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1421.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1421.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1557.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1557.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1557.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1433.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1433.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1433.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1429.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1429.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1429.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1547.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1547.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1547.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1586.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1586.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1586.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1621.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1621.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1621.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1603.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1603.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1603.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1604.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1604.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1604.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1350.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1350.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1350.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1541.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1541.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1541.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1627.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1627.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1627.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1638.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1638.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1638.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1639.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1639.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1639.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1641.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1641.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1641.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1654.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1654.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1654.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1648.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1648.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1648.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1655.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1655.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1655.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1656.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1656.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1656.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1646.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1646.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1646.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1658.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1658.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1658.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1660.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1660.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1660.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1661.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1661.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1661.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1718.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1718.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1718.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1722.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1722.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1722.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1726.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1726.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1726.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1727.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1727.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1727.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1723.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1723.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1723.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1730.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1730.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1730.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1647.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1647.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1647.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1734.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1734.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1734.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1735.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1735.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1735.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1746.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1746.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1746.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1739.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1739.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1739.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1747.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1747.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1747.JPG" data-title="" data-description=""></a>
+<a href="https://photos.kehua.org.tw/album/39/IMG_1731.JPG"><img src="https://photos.kehua.org.tw/album/39/thumbnail/IMG_1731.JPG" data-big="https://photos.kehua.org.tw/album/39/IMG_1731.JPG" data-title="" data-description=""></a>
    
     
     </div>
@@ -315,7 +337,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
         <tr>
           <td width="1048" align="right" valign="bottom"><table width="85%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="center"><img src="/images/a-logo2.png" width="90" height="64" /></td>
+              <td align="center"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></td>
             </tr>
             <tr>
               <td align="center"><table width="95%" border="0" cellpadding="0" cellspacing="0">
@@ -323,7 +345,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
                   <td width="979" align="right" valign="bottom" class="black1"><span class="orange1">服務專線</span> 02-3393-8591　|　<span class="orange1">郵件</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cacdc5cce3c8c6cbd6c28dccd1c48dd7d4">[email&#160;protected]</a>　|　<span class="orange1">地址</span> 10049 台北市中正區忠孝東路1段35號11樓</td>
                   <td width="30" valign="bottom" class="black1"><table width="30" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td><a href="#"><img src="/images/icon-map-30x40.png" width="30" height="40" border="0" /></a></td>
+                        <td><a href="#"><img src="/images/icon-map-30x40.png?v=2" width="30" height="40" border="0" /></a></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -332,8 +354,8 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
           </table></td>
           <td width="152" align="right" valign="bottom"><table width="150" border="0" cellspacing="0" cellpadding="3">
             <tr>
-              <td align="right"><a href="https://www.facebook.com/%E6%A8%82%E8%A8%88%E7%95%AB-Project-M-1563819843629830/" target="new"><img src="/images/icon-fb3-72x72.png" alt="樂計畫粉絲專頁" title="樂計畫粉絲專頁" width="72" height="72" border="0" /></a></td>
-              <td align="right"><a href="https://www.facebook.com/acappella.love/" target="new"><img src="/images/icon-fb4-72x72.png" alt="I Love A Cappella粉絲專頁" title="I Love A Cappella粉絲專頁" width="72" height="72" border="0" /></a></td>
+              <td align="right"><a href="https://www.facebook.com/%E6%A8%82%E8%A8%88%E7%95%AB-Project-M-1563819843629830/" target="new"><img src="/images/icon-fb3-72x72.png?v=2" alt="樂計畫粉絲專頁" title="樂計畫粉絲專頁" width="72" height="72" border="0" /></a></td>
+              <td align="right"><a href="https://www.facebook.com/acappella.love/" target="new"><img src="/images/icon-fb4-72x72.png?v=2" alt="I Love A Cappella粉絲專頁" title="I Love A Cappella粉絲專頁" width="72" height="72" border="0" /></a></td>
             </tr>
           </table></td>
         </tr>
@@ -352,7 +374,7 @@ background: -o-linear-gradient(270deg, #ffffff 0%, #FFAA73 50%);
         Galleria.loadTheme('/js/galleria.classic.min.js');
 
         // Initialize Galleria
-        Galleria.run('#galleria');
+        if (window.innerWidth > 820) { Galleria.run('#galleria'); }
     });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a50f379cb9529d09',t:'MTc5MzA3ODA2Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
