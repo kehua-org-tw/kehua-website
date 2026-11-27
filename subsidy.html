@@ -1,152 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="Content-Language" content="zh-tw"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=2" />
-<title>補助專區 - 科華文教基金會</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=2" />
+<title>人聲音樂專案補助計畫｜補助專區 - 科華文教基金會</title>
+<meta name="description" content="科華文教基金會「人聲音樂專案補助計畫」：支持阿卡貝拉、流行合唱、爵士等人聲音樂團隊與個人的海外交流與國內製作展演。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="subsidy/subsidy.css?v=2">
 <script src="js/jquery_2.2.4.js"></script>
-<script type="text/JavaScript">
-<!--
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-}
-
-function content(id){
-$(document).ready(function(){
-            
-                $("#"+id).slideToggle("slow");
-          
-        });
-}
-//-->
-</script>
 <style type="text/css">
-<!--
-  
-body {
-	margin-top: 0px;
-}
+/* 網站共用的電腦版選單與頁尾樣式（與其他頁面相同） */
 .black1 {font-family: Microsoft JhengHei,arial,helvetica,sans-serif;font-size: 16px;color: #000000;line-height: 26px; }
-.black2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #000000;line-height: 32px; }
 .orange1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #eb6306;line-height: 26px; }
-.orange2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #eb6306;line-height: 26px; }
-/*--- Green Box (box-c) ---*/
- .box-c{
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: right;
-  cursor: pointer;
-  line-height:52px;
-}
-
-.box-d{
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: right;
-  cursor: pointer;
-  line-height:52px;
-}
-/* .box-c{height:125px;}*/
-
-.custom-underline {
-  font-family: Microsoft JhengHei,helvetica,sans-serif;
-  position: relative;
-  display: inline-block;
-  font-size: 22px;
-  font-weight: 500;
-  text-align:right;
-
-}
-.custom-underline,
-.custom-underline:hover,
-.custom-underline:focus,
-.custom-underline:active {
-  color: #eb6306;
-  text-decoration: none;  
-}
-
-.custom-underline::after {
-  content: "";
-  position: absolute;
-}
-.box-c .custom-underline::after{
-  top:90%;
-  height:5px !important;
-  width: 0%;
-  left: 50%;
-  background-color:  #eb6306;
-  transition: 0.5s ease-out all .1s;
-}
-
-.box-c:hover .custom-underline::after {
-  width: 100%;
-  left: 0%;
-  transition: 0.5s ease all;
-}
-
-.box-d .custom-underline::after{
-  top:90%;
-  height:5px !important;
-  width: 100%;
-  left: 0%;
-  background-color:  #eb6306;
-  /*transition: 0.5s ease-out all .1s;*/
-}
-
-.white1 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 16px;color: #ffffff;line-height: 26px; }
-.white2 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 26px; }
-.white3 {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size: 20px;color: #ffffff;line-height: 32px; }
-.news {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:16px;color: #000000;line-height:15px; text-decoration:none }
-/*--- 補助專區 ---*/
-.sub-banner {width:1200px;height:220px;background:#eb6306;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.sub-banner-title {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:44px;font-weight:500;color:#ffffff;letter-spacing:8px;}
-.sub-banner-line {width:80px;height:5px;background:#ffffff;margin-top:18px;}
-.sub-section {width:960px;text-align:left;padding:36px 0 12px 0;scroll-margin-top:20px;}
-.sub-title {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:24px;font-weight:500;color:#eb6306;line-height:32px;padding-bottom:10px;margin-bottom:20px;border-bottom:2px solid #ffc6a0;}
-.sub-text {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:18px;color:#333333;line-height:32px;white-space:pre-line;}
-.sub-news-table {width:900px;}
-.sub-news-table td {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:16px;color:#000000;line-height:26px;vertical-align:top;}
-.sub-news-date {width:130px;color:#eb6306 !important;font-family:Arial !important;}
-.sub-news-title a {color:#000000;text-decoration:none;cursor:pointer;}
-.sub-news-title a:hover {color:#eb6306;}
-.sub-news-body {display:none;width:720px;line-height:25px;background:#888888;color:#ffffff;border-radius:8px;padding:10px 14px;margin:2px 0 8px 0;white-space:pre-line;}
-.sub-news-body a {color:#ffffff;text-decoration:underline;}
-.sub-news-links {margin-top:8px;white-space:normal;}
-.sub-news-links a {display:block;}
-.sub-apply-box {background:#ffffff;border-radius:8px;padding:28px 32px;font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:18px;color:#333333;line-height:32px;}
-.sub-apply-status {font-size:22px;font-weight:500;color:#eb6306;margin-bottom:6px;}
-.sub-apply-closed .sub-apply-status {color:#888888;}
-.sub-button {display:inline-block;margin:14px 0 6px 0;padding:8px 32px;background:#eb6306;color:#ffffff !important;border-radius:21px;font-size:18px;text-decoration:none;}
-.sub-button:hover {background:#c95205;}
-.sub-apply-box a.sub-inline {color:#eb6306;}
-.sub-pending {color:#999999;font-size:16px;}
-.sub-dl-category {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:20px;color:#000000;margin:18px 0 6px 0;}
-.sub-dl-row {display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px dashed #cccccc;}
-.sub-dl-name {font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:18px;color:#333333;}
-.sub-dl-files a, .sub-dl-files span {display:inline-block;margin-left:8px;padding:2px 14px;border-radius:14px;font-family:Arial;font-size:14px;line-height:24px;}
-.sub-dl-files a {background:#eb6306;color:#ffffff;text-decoration:none;}
-.sub-dl-files a:hover {background:#c95205;}
-.sub-dl-files span {background:#e5e5e5;color:#999999;}
-.sub-result {padding:12px 0;border-bottom:1px dashed #cccccc;font-family: Microsoft JhengHei,helvetica,sans-serif;font-size:18px;color:#333333;line-height:30px;}
-.sub-result-year {color:#eb6306;font-family:Arial;margin-right:12px;}
--->
+.box-c, .box-d {position: relative;display: block;width: 100%;text-align: right;cursor: pointer;line-height:52px;}
+.custom-underline {font-family: Microsoft JhengHei,helvetica,sans-serif;position: relative;display: inline-block;font-size: 22px;font-weight: 500;text-align:right;}
+.custom-underline, .custom-underline:hover, .custom-underline:focus, .custom-underline:active {color: #eb6306;text-decoration: none;}
+.custom-underline::after {content: "";position: absolute;}
+.box-c .custom-underline::after {top:90%;height:5px !important;width: 0%;left: 50%;background-color: #eb6306;transition: 0.5s ease-out all .1s;}
+.box-c:hover .custom-underline::after {width: 100%;left: 0%;transition: 0.5s ease all;}
+.box-d .custom-underline::after {top:90%;height:5px !important;width: 100%;left: 0%;background-color: #eb6306;}
 </style>
 </head>
 
-<body>
+<body class="sub-page">
+
+<!-- 電腦版選單（與其他頁面相同） -->
+<div class="sub-desk">
 <table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td><div align="center">
       <table width="1200" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="19%" align="left"><a href="index.html"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></a>
+          <td width="19%" align="left"><a href="index.html"><img src="/images/a-logo2.png?v=2" width="90" height="64" alt="科華文教基金會" /></a>
             <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
                 <td height="8"></td>
@@ -166,64 +55,125 @@ body {
           </table></td>
         </tr>
       </table>
-      <table width="1200" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td><div class="sub-banner"><div class="sub-banner-title">補助專區</div><div class="sub-banner-line"></div></div></td>
-        </tr>
-      </table>
-      <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-          <td height="24"></td>
-        </tr>
-      </table>
-      <table width="1200" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td><img src="/images/fillet-1.png?v=2" width="1200" height="23" /></td>
-        </tr>
-      </table>
-      <table width="1200" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td align="center" valign="top" bgcolor="fbe6d7">
-          <noscript><div class="black1" style="padding:40px">請開啟瀏覽器的 JavaScript 以顯示補助專區內容。</div></noscript>
+    </div></td>
+  </tr>
+</table>
+</div>
 
-<!--1. 最新消息-->
-          <div class="sub-section" id="sub-news">
-            <div class="sub-title">最新消息</div>
-            <table class="sub-news-table" border="0" cellspacing="4" cellpadding="4" id="sub-news-list"></table>
-          </div>
+<!-- 手機版選單（連到手機版頁面） -->
+<header class="sub-mob-header">
+  <div class="sub-mob-bar">
+    <a href="mindex.html"><img class="logo" src="/images/a-logo-140x99.png?v=2" alt="科華文教基金會" /></a>
+    <button type="button" class="sub-mob-menu-btn" aria-expanded="false" aria-controls="sub-mob-menu" aria-label="開啟選單">
+      <img src="/images/icon-menu1a-66x66.png?v=2" alt="" />
+    </button>
+  </div>
+  <nav class="sub-mob-menu" id="sub-mob-menu">
+    <a href="mindex.html">關於科華</a>
+    <a href="mnews.html">最新消息</a>
+    <a href="subsidy.html" aria-current="page">補助專區</a>
+    <a href="mactivities.html">藝文深耕</a>
+    <a href="mmedia.html">影音回顧</a>
+    <a href="malbum.html">活動相簿</a>
+    <a href="md_file.html">公開資訊</a>
+    <a href="msupport.html">支持與贊助</a>
+  </nav>
+</header>
 
-<!--2. 計畫介紹-->
-          <div class="sub-section" id="sub-intro">
-            <div class="sub-title">計畫介紹</div>
-            <div class="sub-text" id="sub-intro-text"></div>
-          </div>
+<main class="sub">
 
-<!--3. 申請補助-->
-          <div class="sub-section" id="sub-apply">
-            <div class="sub-title">申請補助</div>
-            <div class="sub-apply-box" id="sub-apply-box"></div>
-          </div>
+  <section class="sub-hero" id="sub-hero">
+    <div class="sub-hero-media" id="sub-hero-media"></div>
+    <svg class="sub-voices" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
+      <path class="v3" d="M-20 52 C 160 14, 420 104, 620 50 S 980 6, 1220 40" />
+      <path class="v1" d="M-20 84 C 180 32, 360 134, 560 80 S 900 26, 1220 72" />
+      <path class="v2" d="M-20 108 C 200 70, 380 140, 600 104 S 940 62, 1220 98" />
+    </svg>
+    <div class="sub-hero-inner">
+      <p class="sub-hero-org">財團法人科華文教基金會</p>
+      <h1 class="sub-hero-title" id="sub-title">人聲音樂<br>專案補助計畫</h1>
+      <p class="sub-hero-tagline" id="sub-tagline"></p>
+      <p class="sub-hero-period" id="sub-hero-period"></p>
+      <div class="sub-hero-actions">
+        <a class="sub-btn sub-btn-primary" href="#sub-downloads">下載簡章與表格</a>
+        <a class="sub-btn sub-btn-ghost" href="#sub-points">看申請重點</a>
+      </div>
+    </div>
+  </section>
 
-<!--4. 年度成果呈現（visible 為 false 時不顯示）-->
-          <div class="sub-section" id="sub-results" style="display:none">
-            <div class="sub-title">年度成果呈現</div>
-            <div id="sub-results-list"></div>
-          </div>
+  <nav class="sub-jump" aria-label="本頁內容">
+    <a href="#sub-news">最新消息</a>
+    <a href="#sub-intro">計畫介紹</a>
+    <a href="#sub-points">申請重點</a>
+    <a href="#sub-timeline">本期時程</a>
+    <a href="#sub-checklist">準備資料</a>
+    <a href="#sub-apply">申請補助</a>
+    <a href="#sub-downloads">下載專區</a>
+  </nav>
 
-<!--5. 下載專區-->
-          <div class="sub-section" id="sub-downloads">
-            <div class="sub-title">下載專區</div>
-            <div id="sub-downloads-list"></div>
-          </div>
+  <noscript><p class="sub-section">請開啟瀏覽器的 JavaScript 以顯示補助專區內容。</p></noscript>
 
-          </td>
-        </tr>
-      </table>
-      <table width="1200" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td><img src="/images/fillet-2.png?v=2" width="1200" height="23" /></td>
-        </tr>
-      </table>
+  <!-- 1. 最新消息 -->
+  <section class="sub-section" id="sub-news">
+    <h2 class="sub-h2">最新消息</h2>
+    <ul class="sub-news-list" id="sub-news-list"></ul>
+  </section>
+
+  <!-- 2. 計畫介紹 -->
+  <section class="sub-section" id="sub-intro">
+    <h2 class="sub-h2">計畫介紹</h2>
+    <div class="sub-story" id="sub-intro-text"></div>
+  </section>
+
+  <section class="sub-section" id="sub-points">
+    <h2 class="sub-h2">申請重點</h2>
+    <div class="sub-points" id="sub-points-list"></div>
+  </section>
+
+  <section class="sub-section" id="sub-timeline">
+    <h2 class="sub-h2">本期時程</h2>
+    <ol class="sub-timeline" id="sub-timeline-list"></ol>
+  </section>
+
+  <section class="sub-section" id="sub-checklist">
+    <h2 class="sub-h2">申請要準備的資料</h2>
+    <div class="sub-check">
+      <p class="sub-check-hint">準備好一項，就勾一項。勾選紀錄只存在你自己的瀏覽器裡。</p>
+      <ul class="sub-check-list" id="sub-checklist-list"></ul>
+      <p class="sub-check-note" id="sub-checklist-note"></p>
+    </div>
+  </section>
+
+  <!-- 3. 申請補助 -->
+  <section class="sub-apply-band" id="sub-apply">
+    <h2 class="sub-h2">申請補助</h2>
+    <div id="sub-apply-box"></div>
+  </section>
+
+  <!-- 4. 年度成果呈現（visible 為 false 時不顯示） -->
+  <section class="sub-section" id="sub-results" hidden>
+    <h2 class="sub-h2">年度成果呈現</h2>
+    <div id="sub-results-list"></div>
+  </section>
+
+  <!-- 5. 下載專區 -->
+  <section class="sub-section" id="sub-downloads">
+    <h2 class="sub-h2">下載專區</h2>
+    <div id="sub-downloads-list"></div>
+  </section>
+
+  <section class="sub-section" id="sub-contact">
+    <h2 class="sub-h2">有問題嗎？</h2>
+    <div class="sub-contact" id="sub-contact-info"></div>
+  </section>
+
+</main>
+
+<!-- 電腦版頁尾（與其他頁面相同） -->
+<div class="sub-desk">
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><div align="center">
       <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
           <td height="24"></td>
@@ -233,7 +183,7 @@ body {
         <tr>
           <td width="1048" align="right" valign="bottom"><table width="85%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="center"><img src="/images/a-logo2.png?v=2" width="90" height="64" /></td>
+              <td align="center"><img src="/images/a-logo2.png?v=2" width="90" height="64" alt="" /></td>
             </tr>
             <tr>
               <td align="center"><table width="95%" border="0" cellpadding="0" cellspacing="0">
@@ -241,7 +191,7 @@ body {
                   <td width="979" align="right" valign="bottom" class="black1"><span class="orange1">服務專線</span> 02-3393-8591　|　<span class="orange1">郵件</span><a href="/cdn-cgi/l/email-protection#c1e1a8afa7ae81aaa4a9b4a0efaeb3a6efb5b6" style="color:#000;text-decoration: none"> <span class="__cf_email__" data-cfemail="adc4c3cbc2edc6c8c5d8cc83c2dfca83d9da">[email&#160;protected]</span></a>　|　<span class="orange1">地址</span> 10049 台北市中正區忠孝東路1段35號11樓</td>
                   <td width="30" valign="bottom" class="black1"><table width="30" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td><a href="https://goo.gl/maps/J6YyNq7VXWo" target="new"><img src="/images/icon-map-30x40.png?v=2" width="30" height="40" border="0" /></a></td>
+                        <td><a href="https://goo.gl/maps/J6YyNq7VXWo" target="new"><img src="/images/icon-map-30x40.png?v=2" width="30" height="40" border="0" alt="地圖" /></a></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -264,7 +214,16 @@ body {
     </div></td>
   </tr>
 </table>
+</div>
+
+<!-- 手機版頁尾 -->
+<footer class="sub-mob-footer">
+  <img src="/images/a-logo-140x99.png?v=2" alt="科華文教基金會" /><br>
+  服務專線 <a href="tel:0233938591">02-3393-8591</a><br>
+  10049 台北市中正區忠孝東路1段35號11樓
+</footer>
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="subsidy/subsidy.js"></script>
+<script src="subsidy/subsidy.js?v=2"></script>
 </body>
 </html>

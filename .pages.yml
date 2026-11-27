@@ -7,7 +7,7 @@ media:
     input: subsidy/files
     output: /subsidy/files
     rename: false
-    extensions: [pdf, doc, docx, odt, xls, xlsx, ods, ppt, pptx, odp, zip, jpg, jpeg, png]
+    extensions: [pdf, doc, docx, odt, xls, xlsx, ods, ppt, pptx, odp, zip, jpg, jpeg, png, webp]
 
 content:
   - name: subsidy-news
@@ -54,14 +54,85 @@ content:
                 required: true
 
   - name: subsidy-page
-    label: 補助專區｜計畫介紹與申請狀態
+    label: 補助專區｜主要內容（介紹、重點、時程、申請狀態）
     type: file
     path: subsidy/data/page.json
     format: json
     fields:
+      - name: programName
+        label: 計畫名稱
+        description: 顯示在瀏覽器分頁標題。
+        type: string
+      - name: tagline
+        label: 主視覺標語
+        description: 顯示在主視覺的計畫名稱下方，建議一句話。
+        type: string
+      - name: heroImage
+        label: 主視覺圖片
+        description: 建議寬 2400 像素以上的橫式圖片。留空時顯示深紫底色和彩色線條。
+        type: image
+        options:
+          media: files
       - name: intro
         label: 計畫介紹
-        description: 約 200 字。空一行可以分段。
+        description: 說明計畫的由來與意義。空一行可以分段，第一段會用較大的字顯示。
+        type: text
+      - name: points
+        label: 申請重點
+        description: 標題用「A 類」開頭會加橘色線，用「B 類」開頭會加紫色線。
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: 標題
+            type: string
+            required: true
+          - name: content
+            label: 內容
+            description: 按 Enter 可以換行。
+            type: text
+      - name: timeline
+        label: 本期時程
+        description: 依時間先後排列。
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{date}　{label}"
+        fields:
+          - name: date
+            label: 日期
+            description: 例如：116.02.15（一）12:00
+            type: string
+            required: true
+          - name: label
+            label: 事項
+            type: string
+            required: true
+          - name: note
+            label: 補充說明
+            type: string
+      - name: checklist
+        label: 申請要準備的資料
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{item}"
+        fields:
+          - name: item
+            label: 項目
+            type: string
+            required: true
+          - name: note
+            label: 說明
+            type: string
+      - name: checklistNote
+        label: 準備資料的提醒文字
+        description: 顯示在準備資料清單下方。
         type: text
       - name: apply
         label: 申請補助
@@ -88,8 +159,21 @@ content:
             description: 申請期間顯示在下方。不需要可以留空。
             type: text
           - name: closedText
-            label: 非申請區間的說明文字
+            label: 非申請期間的說明文字
             type: text
+      - name: contact
+        label: 聯絡資訊
+        type: object
+        fields:
+          - name: name
+            label: 聯絡單位
+            type: string
+          - name: phone
+            label: 電話
+            type: string
+          - name: email
+            label: 信箱
+            type: string
 
   - name: subsidy-results
     label: 補助專區｜年度成果呈現

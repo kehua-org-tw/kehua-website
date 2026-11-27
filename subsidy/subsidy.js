@@ -4,6 +4,7 @@
  */
 (function ($) {
   var CATEGORY_ORDER = ["辦法", "簡章", "申請表格", "其他"];
+  var CHECK_KEY = "kehua-subsidy-checklist";
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -27,16 +28,24 @@
   }
 
   function failed($el) {
-    $el.html('<div class="sub-pending">內容讀取失敗，請稍後再試。</div>');
+    $el.html('<p class="sub-pending">內容讀取失敗，請重新整理頁面。</p>');
+  }
+
+  function readChecked() {
+    try { return JSON.parse(localStorage.getItem(CHECK_KEY)) || {}; } catch (e) { return {}; }
+  }
+
+  function saveChecked(state) {
+    try { localStorage.setItem(CHECK_KEY, JSON.stringify(state)); } catch (e) { /* 無法儲存時只影響勾選紀錄 */ }
   }
 
   function renderNews(data) {
     var list = (data.items || []).slice().sort(function (a, b) {
       return String(b.date || "").localeCompare(String(a.date || ""));
     });
-    var $t = $("#sub-news-list");
+    var $list = $("#sub-news-list");
     if (!list.length) {
-      $t.append('<tr><td class="sub-pending">目前沒有公告。</td></tr>');
+      $list.append('<li class="sub-pending">目前沒有公告。</li>');
       return;
     }
     $.each(list, function (i, n) {
@@ -47,37 +56,133 @@
           return link(l.url, l.text || l.url);
         }).join("") + "</div>";
       }
-      $t.append(
-        '<tr><td class="sub-news-date" align="right">' + esc(n.date) + "</td>" +
-        '<td class="sub-news-title"><a href="javascript:void(0);" data-i="' + i + '">' + esc(n.title) + "</a>" +
-        '<div class="sub-news-body" id="sub-news-' + i + '">' + body + "</div></td></tr>"
+      $list.append(
+        '<li class="sub-news-item">' +
+        '<button type="button" class="sub-news-head" aria-expanded="false" aria-controls="sub-news-' + i + '">' +
+        '<span class="sub-news-date">' + esc(n.date) + "</span>" +
+        '<span class="sub-news-title">' + esc(n.title) + "</span>" +
+        '<span class="sub-news-toggle" aria-hidden="true">+</span></button>' +
+        '<div class="sub-news-body" id="sub-news-' + i + '">' + body + "</div></li>"
       );
     });
-    $t.on("click", ".sub-news-title > a", function () {
-      $("#sub-news-" + $(this).data("i")).slideToggle("slow");
+    $list.on("click", ".sub-news-head", function () {
+      var $item = $(this).closest(".sub-news-item").toggleClass("open");
+      $(this).attr("aria-expanded", $item.hasClass("open") ? "true" : "false");
+      $item.find(".sub-news-body").slideToggle(300);
     });
   }
 
-  function renderPage(data) {
-    $("#sub-intro-text").text(data.intro || "");
+  function paragraphs(text) {
+    return $.map(String(text || "").split(/\n\s*\n/), function (p) {
+      return p.trim() ? "<p>" + esc(p.trim()) + "</p>" : null;
+    }).join("");
+  }
 
+  function renderHero(data) {
     var a = data.apply || {};
-    var $box = $("#sub-apply-box");
-    if (!a.open) {
-      $box.addClass("sub-apply-closed").html(
-        '<div class="sub-apply-status">目前非申請區間</div>' +
-        "<div>" + esc(a.closedText) + "</div>"
-      );
-      return;
+    if (data.programName) {
+      document.title = data.programName + "｜補助專區 - 科華文教基金會";
     }
-    var html = '<div class="sub-apply-status">目前為 ' + esc(a.period) + " 申請區間</div>";
-    if (a.dates) html += "<div>申請期間：" + esc(a.dates) + "</div>";
-    html += a.applyUrl
-      ? link(a.applyUrl, "線上申請", "sub-button")
-      : '<div class="sub-pending">線上申請連結準備中</div>';
-    html += '<div>申請文件請至<a class="sub-inline" href="#sub-downloads">下載專區</a>查看。</div>';
-    if (a.note) html += '<div style="white-space:pre-line;margin-top:8px">' + esc(a.note) + "</div>";
-    $box.html(html);
+    $("#sub-tagline").text(data.tagline || "");
+    if (a.period || a.dates) {
+      $("#sub-hero-period").html(
+        "<strong>" + esc(a.period) + (a.open ? " 申請中" : "") + "</strong>" +
+        (a.dates ? "申請期間 " + esc(a.dates) : "")
+      );
+    }
+    if (data.heroImage) {
+      $("#sub-hero").addClass("has-image");
+      $("#sub-hero-media").css("background-image", 'url("' + String(data.heroImage).replace(/"/g, "") + '")');
+    }
+  }
+
+  function renderIntro(data) {
+    $("#sub-intro-text").html(paragraphs(data.intro));
+
+    var $points = $("#sub-points-list");
+    $.each(data.points || [], function (i, p) {
+      var title = String(p.title || "");
+      var cls = /^A\s*類/.test(title) ? " is-a" : /^B\s*類/.test(title) ? " is-b" : "";
+      $points.append(
+        '<div class="sub-point' + cls + '"><h3>' + esc(title) + "</h3><p>" + esc(p.content) + "</p></div>"
+      );
+    });
+    if (!(data.points || []).length) $("#sub-points").hide();
+
+    var $steps = $("#sub-timeline-list");
+    $.each(data.timeline || [], function (i, s) {
+      $steps.append(
+        '<li class="sub-step"><div class="sub-step-date">' + esc(s.date) + "</div>" +
+        '<div class="sub-step-label">' + esc(s.label) + "</div>" +
+        (s.note ? '<div class="sub-step-note">' + esc(s.note) + "</div>" : "") + "</li>"
+      );
+    });
+    if (!(data.timeline || []).length) $("#sub-timeline").hide();
+
+    renderChecklist(data);
+  }
+
+  function renderChecklist(data) {
+    var items = data.checklist || [];
+    if (!items.length) { $("#sub-checklist").hide(); return; }
+    var state = readChecked();
+    var $list = $("#sub-checklist-list");
+    $.each(items, function (i, c) {
+      var key = String(c.item || i);
+      $list.append(
+        '<li class="sub-check-item"><button type="button" class="sub-check-btn" role="checkbox" aria-checked="' +
+        (state[key] ? "true" : "false") + '" data-key="' + esc(key) + '">' +
+        '<span class="sub-check-box" aria-hidden="true"></span>' +
+        '<span class="sub-check-text"><strong>' + esc(c.item) + "</strong>" +
+        (c.note ? "<span>" + esc(c.note) + "</span>" : "") + "</span></button></li>"
+      );
+    });
+    $list.on("click", ".sub-check-btn", function () {
+      var on = $(this).attr("aria-checked") !== "true";
+      $(this).attr("aria-checked", on ? "true" : "false");
+      var s = readChecked();
+      if (on) s[$(this).data("key")] = true; else delete s[$(this).data("key")];
+      saveChecked(s);
+    });
+    $("#sub-checklist-note").text(data.checklistNote || "").toggle(!!data.checklistNote);
+  }
+
+  function renderApply(data) {
+    var a = data.apply || {};
+    var html;
+    if (a.open) {
+      html = '<p class="sub-apply-status">' + esc(a.period) + " 開放申請中</p>";
+      if (a.dates) html += '<p class="sub-apply-dates">申請期間：' + esc(a.dates) + "</p>";
+      if (a.note) html += '<p class="sub-apply-text">' + esc(a.note) + "</p>";
+      html += '<div class="sub-apply-actions">' +
+        (a.applyUrl
+          ? link(a.applyUrl, "前往線上申請", "sub-btn sub-btn-primary")
+          : '<span class="sub-apply-wait">線上申請連結準備中</span>') +
+        '<a class="sub-btn sub-btn-ghost" href="#sub-downloads">下載簡章與表格</a></div>';
+    } else {
+      html = '<p class="sub-apply-status">' + esc(a.period ? a.period + " 尚未開放申請" : "目前非申請期間") + "</p>";
+      if (a.dates) html += '<p class="sub-apply-dates">申請期間：' + esc(a.dates) + "</p>";
+      if (a.closedText) html += '<p class="sub-apply-text">' + esc(a.closedText) + "</p>";
+      html += '<div class="sub-apply-actions"><a class="sub-btn sub-btn-primary" href="#sub-downloads">下載簡章與表格</a></div>';
+    }
+    $("#sub-apply-box").html(html);
+  }
+
+  function renderContact(data) {
+    var c = data.contact || {};
+    if (!c.phone && !c.email) { $("#sub-contact").hide(); return; }
+    $("#sub-contact-info").html(
+      (c.name ? "<div><strong>" + esc(c.name) + "</strong></div>" : "") +
+      (c.phone ? '<div>電話 <a href="tel:' + esc(String(c.phone).replace(/[^\d+]/g, "")) + '">' + esc(c.phone) + "</a></div>" : "") +
+      (c.email ? '<div>信箱 <a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></div>" : "")
+    );
+  }
+
+  function renderPage(data) {
+    renderHero(data);
+    renderIntro(data);
+    renderApply(data);
+    renderContact(data);
   }
 
   function renderResults(data) {
@@ -90,7 +195,7 @@
         (it.content ? '<div style="white-space:pre-line">' + esc(it.content) + "</div>" : "") + "</div>"
       );
     });
-    $("#sub-results").show();
+    $("#sub-results").prop("hidden", false);
   }
 
   function fileFormat(path) {
@@ -102,7 +207,7 @@
     var list = data.items || [];
     var $list = $("#sub-downloads-list");
     if (!list.length) {
-      $list.append('<div class="sub-pending">目前沒有可下載的檔案。</div>');
+      $list.append('<p class="sub-pending">目前沒有可下載的檔案。</p>');
       return;
     }
     var groups = {}, order = CATEGORY_ORDER.slice();
@@ -113,25 +218,33 @@
     });
     $.each(order, function (i, c) {
       if (!groups[c]) return;
-      $list.append('<div class="sub-dl-category">' + esc(c) + "</div>");
-      $.each(groups[c], function (j, d) {
+      var rows = $.map(groups[c], function (d) {
         var files = asList(d.files);
         var buttons = files.length
           ? $.map(files, function (f) {
-              return '<a href="' + esc(f) + '" target="_blank" rel="noopener" download>' + esc(fileFormat(f)) + " ↓</a>";
+              return '<a href="' + esc(f) + '" target="_blank" rel="noopener" download aria-label="下載 ' +
+                esc(d.name) + "（" + esc(fileFormat(f)) + '）">' + esc(fileFormat(f)) + "</a>";
             }).join("")
           : "<span>檔案準備中</span>";
-        $list.append(
-          '<div class="sub-dl-row"><div class="sub-dl-name">' + esc(d.name) + "</div>" +
-          '<div class="sub-dl-files">' + buttons + "</div></div>"
-        );
-      });
+        return '<div class="sub-dl-row"><div class="sub-dl-name">' + esc(d.name) + "</div>" +
+          '<div class="sub-dl-files">' + buttons + "</div></div>";
+      }).join("");
+      $list.append('<div class="sub-dl-group"><h3 class="sub-dl-category">' + esc(c) + "</h3>" + rows + "</div>");
+    });
+  }
+
+  function bindMobileMenu() {
+    $(".sub-mob-menu-btn").on("click", function () {
+      var open = $("#sub-mob-menu").toggleClass("open").hasClass("open");
+      $(this).attr("aria-expanded", open ? "true" : "false");
+      $(this).find("img").attr("src", open ? "/images/icon-close1a-66x66.png?v=2" : "/images/icon-menu1a-66x66.png?v=2");
     });
   }
 
   $(function () {
-    load("news").done(renderNews).fail(function () { failed($("#sub-news")); });
-    load("page").done(renderPage).fail(function () { failed($("#sub-apply-box")); });
+    bindMobileMenu();
+    load("news").done(renderNews).fail(function () { failed($("#sub-news-list")); });
+    load("page").done(renderPage).fail(function () { failed($("#sub-intro-text")); failed($("#sub-apply-box")); });
     load("results").done(renderResults);
     load("downloads").done(renderDownloads).fail(function () { failed($("#sub-downloads-list")); });
   });
